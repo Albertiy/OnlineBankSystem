@@ -90,6 +90,7 @@
         <p>
           <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
         </p>
+        <button type="button" class="btn btn-lg btn-primary">Primary</button>
       </div>
 
     </div> <!-- /container -->
