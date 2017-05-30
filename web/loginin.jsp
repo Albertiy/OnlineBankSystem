@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login in &middot;OnlineBankSystem</title>
+        <title>Login In &middot;OnlineBankSystem</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
         <!-- Le styles -->
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
     <!--旧的定制化样式表
     <style type="text/css">
       body {
@@ -67,7 +67,7 @@
             </form>
         </div> <!-- /container -->
         
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.2.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
