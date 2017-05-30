@@ -13,8 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
+        <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
         <!-- Le styles -->
-    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
+    <!--旧的定制化样式表
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -47,21 +50,24 @@
         padding: 7px 9px;
       }
 
-    </style>
+    </style>-->
     </head>
     <body>
         <div class="container">
             <form class="form-signin">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <input type="text" class="input-block-level" placeholder="Email address">
-                <input type="password" class="input-block-level" placeholder="Password">
+                <h2 class="form-signin-heading">Please login in</h2>
+                <label for="inputCustomerID" class="sr-only">Customer Id</label>
+                <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <label class="checkbox">
                   <input type="checkbox" value="remember-me"> Remember me
                 </label>
-                <button class="btn btn-primary" type="submit">Sign in</button>
+                <button class="btn btn-block btn-lg btn-primary" type="submit">Sign in</button>
             </form>
-    </div> <!-- /container -->
-    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+        </div> <!-- /container -->
+        
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
