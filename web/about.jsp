@@ -1,7 +1,7 @@
 <%-- 
-    Document   : newjsp
-    Created on : 2017-5-30, 14:22:04
-    Author     : BearK
+    Document   : About
+    Created on : 2017-5-31, 16:59:40
+    Author     : YAN YUE
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

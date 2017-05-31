@@ -17,6 +17,7 @@
         <!-- Le styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/blue.css" rel="stylesheet">
     <!--旧的定制化样式表
     <style type="text/css">
       body {
@@ -52,22 +53,41 @@
 
     </style>-->
     </head>
-    <body>
+    <body style="background-image:${pageContext.request.contextPath}/img/background.jpg">
+        <jsp:include flush="true" page="header.jsp"></jsp:include>
         <div class="container">
             <form class="form-signin">
-                <h2 class="form-signin-heading">Please login in</h2>
+                <h2 class="form-signin-heading">Please sign in</h2>
                 <label for="inputCustomerID" class="sr-only">Customer Id</label>
                 <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div class="form-control-static">
                 <label class="checkbox">
-                  <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                <button class="btn btn-block btn-lg btn-primary" type="submit">Sign in</button>
+                <div class="icheckbox_square-blue">
+                    <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                    <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                </div>Remember me</label>
+                <a href="" role="button" >forget your password?</a>
+                </div>
+                <div class="btn-block">
+                <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
+                </div>
             </form>
         </div> <!-- /container -->
         
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.2.js"></script>
+        <!-- Footer -->
+        <jsp:include flush="true" page="footer.jsp"></jsp:include>
+        
+        <!-- Scripts -->
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1/jquery-3.2.1.min.js"><\/script>')</script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/icheck.min.js"></script>
+        <script>
+            //document.load();
+            //function check_blue(){$('#check-blue').iCheck('check');}
+        </script>
     </body>
 </html>
