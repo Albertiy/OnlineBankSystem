@@ -19,6 +19,7 @@
         
         <!-- Styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/carousel.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navbar -->
@@ -35,7 +36,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img style="height: auto" alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default.jpg"/>
+                    <img alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default.jpg"/>
                     <div class="carousel-caption">
                         <h1>Welcome to Online Bank</h1>
                         <p>
@@ -44,24 +45,24 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img  style="height: auto" alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default1.png" />
+                    <img alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default1.png" />
                     <div class="carousel-caption">
                         <h4>Second Thumbnail label</h4>
                         <p>这是第二张图片</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: auto" alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default2.png" />
+                    <img alt="Sorry, this picture cannot be loaded." src="${pageContext.request.contextPath}/assets/img/default2.png" />
                     <div class="carousel-caption">
                     <h4>Third Thumbnail label</h4>
                     <p>这是第三张图片</p>
                 </div>
             </div>
 	</div>
-                    <a class="left carousel-control" href="#carousel_1" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel_1" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="left carousel-control" href="#carousel_1" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#carousel_1" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
     
     <!--

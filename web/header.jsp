@@ -16,7 +16,7 @@
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-inverse  navbar-fixed-top"><!-- 白色导航条是 navbar-default navbar-fixed-top让导航条固定在顶部，static-top为默认-->
+        <nav id="top_navbar" class="navbar navbar-inverse  navbar-fixed-top"><!-- 白色导航条是 navbar-default navbar-fixed-top让导航条固定在顶部，static-top为默认-->
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,8 +38,8 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Style<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Typical</a></li>
-                    <li><a href="#">Night</a></li>
+                      <li><a id="typical" onclick="" role="button">Typical</a></li>
+                      <li><a id="night" onclick="function(event){$('#top_navbar').removeClass('navbar-inverse');$('#top_navbar').addClass('navbar-default');}" role="button">Night</a></li>
                   </ul>
                 </li>
             </ul>

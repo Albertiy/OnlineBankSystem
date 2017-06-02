@@ -75,6 +75,7 @@
                 <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
                 </div>
             </form>
+            <p id="location">This should be something your part of url.</p>
         </div> <!-- /container -->
         
         <!-- Footer -->
@@ -88,6 +89,44 @@
         <script>
             //document.load();
             //function check_blue(){$('#check-blue').iCheck('check');}
+            $(document).ready(function(){
+                $("#typical").click(function(){
+                    if($('#top_navbar').hasClass('navbar-inverse'))
+                        $('#top_navbar').removeClass('navbar-inverse');
+                    if(!$('#top_navbar').hasClass('navbar-default'))
+                        $('#top_navbar').addClass('navbar-default');
+                    $('.footer').css("background-color","#f5f5f5");
+                    
+                });
+                $("#night").click(function(){
+                    if($('#top_navbar').hasClass('navbar-default'))
+                        $('#top_navbar').removeClass('navbar-default');
+                    if(!$('#top_navbar').hasClass('navbar-inverse'))
+                        $('#top_navbar').addClass('navbar-inverse');
+                    $('.footer').css("background-color","#111111");
+                });
+                
+                $(".nav .navbar_nav li").each(function(){
+                    $this = $(this);
+                    if($this[0].href===String(window.location)){
+                        if(!$this.parent().hasClass("active")){
+                            $this.parent().addClass("active");
+                        }
+                        $("#location").append($this[0].href);
+                    }
+                });
+                $("#location").ready(function() {
+                    $("#location").text(String(window.location));
+                });
+                
+                $('#check-blue').on('ifChecked', function(event){
+                    alert(event.type + ' callback');
+                });
+                $('#check-blue').iCheck({
+                    labelHover: false,
+                    cursor: true
+                });
+            });
         </script>
     </body>
 </html>
