@@ -27,7 +27,7 @@
             <jsp:param name="nav" value="home.jsp"></jsp:param>
         </jsp:include>
 
-                <!-- 滚动图片 -->
+        <!-- 滚动图片 -->
         <div class="carousel slide" id="carousel_1">
             <ol class="carousel-indicators">
                 <li class="active" data-slide-to="0" data-target="#carousel_1"></li>
@@ -82,17 +82,36 @@
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1/jquery-3.2.1.min.js"><\/script>')</script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            $("#location").function() {
-                    $this.text(String(window.location));
-            }
-            $(".nav navbar_nav a").each(function(){
-                $this = $(this); 
-                if($this[0].href===String(window.location)){ 
-                    
-                    $this.parent().addClass("active");  
-                }
-            }); 
+        <script>
+            $(document).ready(function(){
+                $("#typical").click(function(){
+                    if($('#top_navbar').hasClass('navbar-inverse'))
+                        $('#top_navbar').removeClass('navbar-inverse');
+                    if(!$('#top_navbar').hasClass('navbar-default'))
+                        $('#top_navbar').addClass('navbar-default');
+                    $('.footer').css("background-color","#f5f5f5");
+                });
+                $("#night").click(function(){
+                    if($('#top_navbar').hasClass('navbar-default'))
+                        $('#top_navbar').removeClass('navbar-default');
+                    if(!$('#top_navbar').hasClass('navbar-inverse'))
+                        $('#top_navbar').addClass('navbar-inverse');
+                    $('.footer').css("background-color","#111111");
+                });
+                
+                $("#location").ready(function() {
+                    var s=String(window.location);
+                    var a=s.lastIndexOf("/");
+                    var b=s.lastIndexOf(".");
+                    var s1="#"+s.substr(a+1,b-a-1);
+                    if(!$(s1).parent().hasClass("active"))
+                    {
+                        $(s1).parent().addClass("active");
+                    }                    
+                    //just for test
+                    //$("#location").text(s1);
+                });
+            });
         </script>
     </body>
 </html>

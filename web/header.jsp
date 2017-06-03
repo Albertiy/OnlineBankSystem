@@ -12,7 +12,7 @@
         <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
         <!-- Styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/nav-header" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/navbar-header.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navbar -->
@@ -29,24 +29,25 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="home.jsp">Home</a></li>
-              <li><a href="about.jsp">About</a></li>
-              <li><a href="contact.jsp">Contact</a></li>
+                <li><a id="home" href="home.jsp">Home</a></li>
+                <li><a id="about" href="about.jsp">About</a></li>
+                <li><a id="contact" href="contact.jsp">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="loginin.jsp">Login In/Sign Up</a></li>
+                <li><a id="loginin" href="loginin.jsp">Login In/Sign Up</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Style<span class="caret"></span></a>
                   <ul class="dropdown-menu">
+                      <!-- function(event){$('#top_navbar').removeClass('navbar-inverse');$('#top_navbar').addClass('navbar-default');} -->
                       <li><a id="typical" onclick="" role="button">Typical</a></li>
-                      <li><a id="night" onclick="function(event){$('#top_navbar').removeClass('navbar-inverse');$('#top_navbar').addClass('navbar-default');}" role="button">Night</a></li>
+                      <li><a id="night" onclick="" role="button">Night</a></li>
                   </ul>
                 </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </nav>
-        <!-- Script -->
+        <!-- No Script -->
         <%-- 
             String s = pageContext.getRequest().getParameter("nav");
         --%>

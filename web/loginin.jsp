@@ -17,41 +17,8 @@
         <!-- Le styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/blue.css" rel="stylesheet">
-    <!--旧的定制化样式表
-    <style type="text/css">
-      body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
-
-      .form-signin {
-        max-width: 300px;
-        padding: 19px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      }
-      .form-signin .form-signin-heading,
-      .form-signin .checkbox {
-        margin-bottom: 10px;
-      }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-      }
-
-    </style>-->
+        <link href="${pageContext.request.contextPath}/assets/css/icheck/blue.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/grumble/grumble.min.css" rel="stylesheet">
     </head>
     <body style="background-image:${pageContext.request.contextPath}/img/background.jpg">
         <jsp:include flush="true" page="header.jsp"></jsp:include>
@@ -68,14 +35,14 @@
                     <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
                     <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                 </div>Remember me</label>
-                <a href="" role="button" >forget your password?</a>
+                <a id="forgetpw" href="#">forget your password?</a>
                 </div>
                 <div class="btn-block">
                 <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
                 <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
                 </div>
             </form>
-            <p id="location">This should be something your part of url.</p>
+            <p id="location">Hi!</p>
         </div> <!-- /container -->
         
         <!-- Footer -->
@@ -85,7 +52,8 @@
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1/jquery-3.2.1.min.js"><\/script>')</script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/icheck.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/icheck/icheck.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/grumble/jquery.grumble.min.js"></script>
         <script>
             //document.load();
             //function check_blue(){$('#check-blue').iCheck('check');}
@@ -96,7 +64,6 @@
                     if(!$('#top_navbar').hasClass('navbar-default'))
                         $('#top_navbar').addClass('navbar-default');
                     $('.footer').css("background-color","#f5f5f5");
-                    
                 });
                 $("#night").click(function(){
                     if($('#top_navbar').hasClass('navbar-default'))
@@ -106,25 +73,62 @@
                     $('.footer').css("background-color","#111111");
                 });
                 
-                $(".nav .navbar_nav li").each(function(){
-                    $this = $(this);
-                    if($this[0].href===String(window.location)){
-                        if(!$this.parent().hasClass("active")){
-                            $this.parent().addClass("active");
-                        }
-                        $("#location").append($this[0].href);
-                    }
-                });
                 $("#location").ready(function() {
-                    $("#location").text(String(window.location));
+                    var s=String(window.location);
+                    var a=s.lastIndexOf("/");
+                    var b=s.lastIndexOf(".");
+                    var s1="#"+s.substr(a+1,b-a-1);
+                    if(!$(s1).parent().hasClass("active"))
+                    {
+                        $(s1).parent().addClass("active");
+                    }                    
+                    //just for test
+                    //$("#location").text(s1);
                 });
                 
                 $('#check-blue').on('ifChecked', function(event){
-                    alert(event.type + ' callback');
+                    $('#check-blue').iCheck('destory');
+                    $(this).grumble({
+                        text: 'SORRY, I CANNOT!', 
+                        angle: 295, 
+                        distance: 10, 
+                        showAfter: 100,
+                        type: 'alt-',
+                        hideAfter: 1100
+                    });
                 });
                 $('#check-blue').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    increaseArea: '20%',
                     labelHover: false,
                     cursor: true
+                });
+                //$("#forgetpw").addClass("grumble-button");
+                $("#forgetpw").click(function(e){
+                    e.preventDefault();
+                    var $me = $(this),interval;
+                    $me.grumble(
+                    {
+                        text: 'Contact our support', 
+                        angle: 75, 
+                        distance: 100, 
+                        showAfter: 200,
+                        type: 'alt-',
+                        hideAfter: false,
+                        //hasHideButton: true
+                        hideOnClick: true
+                        //转动效果看这里
+			/*onShow: function(){
+				var angle = 45, dir = 1;
+				interval = setInterval(function(){
+					(angle > 135 ? (dir=-1, angle--) : ( angle < 45 ? (dir=1, angle++) : angle+=dir));
+					$me.grumble('adjust',{angle: angle});
+				},25);
+			},
+			onHide: function(){
+				clearInterval(interval);
+			}*/
+                    });
                 });
             });
         </script>

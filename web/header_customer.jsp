@@ -13,7 +13,7 @@
         
         <!-- Styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/nav-header" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/navbar-header.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navbar -->
