@@ -71,13 +71,13 @@ public class UserDaoImpl implements UserDao {
             //4.获得参数
             ps.setString(1, login_id);
             //5.执行查询
+            System.out.println("cn.niit.dao.impl.UserDaoImpl.findUserByName()");
             rs = ps.executeQuery();
             //6.处理查询结果返回集,将rs集合中的数据封装到User中去。
             if (rs.next()) {
                 u = new User();
                 u.setLogin_id(rs.getString("login_id"));
                 u.setLogin_pw(rs.getString("login_pw"));
-                u.setAccount_id(rs.getString("account_id"));//#####数据类型
                 u.setName(rs.getString("name"));
                 u.setAddress(rs.getString("address"));
                 u.setEmail(rs.getString("email"));
@@ -91,6 +91,7 @@ public class UserDaoImpl implements UserDao {
         } finally {
             //7.关闭资源,返回User
             JDBCUtils.close(conn, ps, rs);
+            
         }
 
     }
@@ -115,7 +116,6 @@ public class UserDaoImpl implements UserDao {
                 User u = new User();
                 u.setLogin_id(rs.getString("login_id"));
                 u.setLogin_pw(rs.getString("login_pw"));
-                u.setAccount_id(rs.getString("account_id"));//#####数据类型
                 u.setName(rs.getString("name"));
                 u.setAddress(rs.getString("address"));
                 u.setEmail(rs.getString("email"));

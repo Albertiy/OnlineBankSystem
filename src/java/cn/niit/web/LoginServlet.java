@@ -11,8 +11,10 @@ import cn.niit.utils.CheckUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URLEncoder;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +25,9 @@ import org.apache.commons.beanutils.BeanUtils;
  * @author BearK
  */
 public class LoginServlet extends HttpServlet {
-	private UserService us = new UserService();
+
+    private UserService us = new UserService();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,43 +41,44 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             //记得先加上这行代码
             request.setCharacterEncoding("UTF-8");
-		//1封装参数
-		User u=new User();
-		try {
-			BeanUtils.populate(u, request.getParameterMap());
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-		//2非空校验
-		Map<String, String> errors = CheckUtils.CheckUser(u);
-		if(errors.size()>0)
-		{
-			//有错误，保存异常到request中，并且转发到登录页面
-			request.setAttribute("errors", errors);
-			request.getRequestDispatcher("/login.jsp").forward(request, response);//#######登陆界面
-			return;
-		}
+            //2.2设置“记住我”功能
+//                RemberUtils.remember(request, response);
+            //1封装参数
+            User u = new User();
+//			BeanUtils.populate(u, request.getParameterMap());
+            u.setLogin_id(request.getParameter("name"));
+            u.setLogin_pw(request.getParameter("password"));
 
-		User user=null;
-		try {
-			//3.调用service登录
-			user = us.login(u);
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.getMessage());
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-			return;
-		}
-		//4.登陆成功，将user保存到Session中进行存储
-		request.getSession().setAttribute("user", user);
-		//5.跳转到列表servlet---------------------------------登陆成功跳转到相应界面
-		response.sendRedirect(request.getContextPath()+"/ListServlet");//需要先重定向到servlet中进行列表数据的准备
-            
+            //2非空校验
+            Map<String, String> errors = CheckUtils.CheckUser(u);
+            if (errors.size() > 0) {
+                //有错误，保存异常到request中，并且转发到登录页面
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/loginin.jsp").forward(request, response);//#######登陆界面
+                return;
+            }
+
+
+            User user = null;
+            try {
+
+                //3.调用service登录
+                user = us.login(u);
+            } catch (Exception e) {
+                e.printStackTrace();
+                request.setAttribute("error", e.getMessage());
+                request.getRequestDispatcher("/loginin.jsp").forward(request, response);
+                return;
+            }
+            //4.登陆成功，将user保存到Session中进行存储
+            request.getSession().setAttribute("user", user);
+            //5.跳转到列表servlet---------------------------------登陆成功跳转到相应界面
+            request.getRequestDispatcher("/Test.jsp").forward(request, response);//#######登陆界面
+            //response.sendRedirect(request.getContextPath()+"/ListServlet");//需要先重定向到servlet中进行列表数据的准备
+
         }
     }
 

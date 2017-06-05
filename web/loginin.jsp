@@ -20,32 +20,50 @@
         <link href="${pageContext.request.contextPath}/assets/css/icheck/blue.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/assets/css/grumble/grumble.min.css" rel="stylesheet">
     </head>
-    <body style="background-image: url(${pageContext.request.contextPath}/assets/img/background.jpg);background-repeat: repeat">
+    <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <jsp:include flush="true" page="header.jsp"></jsp:include>
-        <div class="container">
-                <form class="form-signin">
+            <div class="container">
+                <form class="form-signin" action="/OnlineBankSystem/LoginServlet" method="post">
+                    <!-这里是用post的方式进行提交的，然后提交到LoginServlet进行操作->
                     <h2 class="form-signin-heading">Please sign in</h2>
-                    <label for="inputCustomerID" class="sr-only">Customer Id</label>
-                    <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus>
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <div class="form-control-static">
-                        <label class="checkbox">
-                            <div class="icheckbox_square-blue">
-                                <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                            </div>Remember me</label>
-                        <a id="forgetpw" href="#">forget your password?</a>
-                    </div>
-                    <div class="btn-block">
-                        <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
-                        <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
-                    </div>
-                </form>
-                <p id="location">Hi!</p>
-            </div> <!-- /container -->
+                    <div>
+                        <label for="inputCustomerID" class="sr-only">Customer Id</label>
+                        <input name="name" value="${cookie.remember.value}"  type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus><font color="red" >${requestScope.errors.name}</font>
+                </div>
+                    <div>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>${requestScope.errors.password}</font>
+                </div>
+                
+                
+                <font color="red" >${requestScope.error}</font>
+                
+                
+                <div class="form-control-static">
+                    <label class="checkbox">
+                        <div class="icheckbox_square-blue">
+                           
+                            </script>  
+                            
+                            
+                            <input name="remember" type="checkbox"  id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
 
-            <!-- Footer -->
+                            
+                            <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                        </div>Remember me</label>
+                    <a id="forgetpw" href="#">forget your password?</a>
+                </div>
+                <div class="btn-block">
+                    <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
+                    <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
+                </div>
+                
+            </form>
+               
+            <p id="location">Hi!</p>
+        </div> <!-- /container -->
+
+        <!-- Footer -->
         <jsp:include flush="true" page="footer.jsp"></jsp:include>
 
             <!-- Scripts -->
