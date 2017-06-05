@@ -21,110 +21,55 @@
         <link href="${pageContext.request.contextPath}/assets/css/grumble/grumble.min.css" rel="stylesheet">
     </head>
     <!--  style="background-image: url(${pageContext.request.contextPath}/assets/img/background.jpg);background-repeat: repeat" -->
-    <body>
+    <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <jsp:include flush="true" page="header.jsp"></jsp:include>
-            <div class="container">                
-                <form class="form-signin">
-                    <div id="legend" class="">
-                        <legend class=""><h2 class="form-signin-heading">Sign up for Online Bank System</h2></legend>
-                    </div>
+            <div class="container">
+                <form class="form-signin" action="/OnlineBankSystem/RegistServlet" method="post">
+                    <legend class=""><h2 class="form-signin-heading">Sign Up for Online Bank System</h2></legend>
                     <div class="control-group">
-                        <!-- Text input-->
-                        <label class=" form-control-static" for="input01">NAME</label>
                         <div class="controls">
-                            <input id="input01" type="text" placeholder="（例：张三）" class=" form-control">
-                            <p class="help-block">Ensure your name is consistent with your id card!</p>
-                        </div>
+                            <label for="inputCustomerID" class="control-label">Customer Id</label>
+                            <input name="name" minlength="6" size="16" type="text" id="inputCustomerID" class="form-control" placeholder="atleast 6 and atmost 16 char" required autofocus>
+                            <font color="red" >${requestScope.error}</font>
                     </div>
-                    <div class="control-group">
-                        <!-- Text input-->
-                        <label class="control-label" for="input01">Login Password</label>
-                        <div class="controls">
-                            <input type="text" placeholder="6位数字" class="input-xlarge">
-                            <p class="help-block">Only for login in this Online Bank System!</p>
-                        </div>
+                    <div class="controls">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
+                        <input name="confirm_password"oninput=validityPwd()" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
                     </div>
-                    <div class="control-group">
-                        <!-- Text input-->
-                        <label class="control-label" for="input01">Ensure Password</label>
-                        <div class="controls">
-                            <input type="text" placeholder="6位数字" class="input-xlarge">
-                        </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="form-control-static" for="inputName">Name</label>
+                        <input name="realname"id="inputName" type="text" placeholder="Real Name" class="form-control">
                     </div>
-                    <div class="control-group">
-                        <!-- Select Basic -->
-                        <label class="control-label">Account Type</label>
-                        <div class="controls">
-                            <select class="input-xlarge">
-                                <option>We suggest the current type for complete servers.</option>
-                                <option>Current Account</option>
-                                <option>Savings Account</option></select>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!-- Select Basic -->
-                        <label class="control-label">Country/Region</label>
-                        <div class="controls">
-                            <select class="input-xlarge">
-                                <option>China (Mainland)</option>
-                                <option>Tai Wan</option>
-                                <option>Hong Kong</option>
-                                <option>Ao Men</option>
-                                <option>Others not supported temporary.</option></select>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!-- Text input-->
-                        <label class="control-label" for="input01">Tele Number</label>
-                        <div class="controls">
-                            <input type="text" placeholder="加区号（例：0527-81234123）" class="input-xlarge">
-                            <p class="help-block">Required</p>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!-- Text input-->
-                        <label class="control-label" for="input01">E-mail</label>
-                        <div class="controls">
-                            <input type="text" placeholder="（例：123@outlook.com）" class="input-xlarge">
-                            <p class="help-block">Not Required</p>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!-- Text input-->
-                        <label class="control-label" for="input01">ID Card</label>
-                        <div class="controls">
-                            <input type="text" placeholder="18位" class="input-xlarge">
-                            <p class="help-block">Required</p>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label"></label>
-                        <!-- Button -->
-                        <div class="controls">
-                            <button class="btn btn-success btn-block btn-lg">Submit</button>
-                        </div>
-                    </div>
-                    <label for="inputCustomerID" class="sr-only">Customer Id</label>
-                    <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required>
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <div class="form-control-static">
-                        <label class="checkbox">
-                            <div class="icheckbox_square-blue">
-                                <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                            </div>Remember me</label>
-                        <a id="forgetpw" href="#">forget your password?</a>
-                    </div>
-                    <div class="btn-block">
-                        <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
-                        <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
-                    </div>
-                </form>
-            </div> <!-- /container -->
-            <!-- Footer -->
-        <jsp:include flush="true" page="footer.jsp"></jsp:include>
 
+                    <div class="controls">
+                        <label class="control-label" for="inputTelNum">Tel Num</label>
+                        <input name="tel" id="inputTelNum" type="text" placeholder="tel number" class="form-control" required>
+                    </div>
+
+                    <div class="controls">
+                        <label class="control-label" for="inputEmail">E-mail</label>
+                        <input name="email" id="inputEmail" type="email" placeholder="email@sample.com" class="form-control">
+                    </div>
+
+                    <div class="controls">
+                        <label class="control-label" for="inputAddress">Address</label>
+                        <input name="address" id="inputAddress" class="form-control"  type="" placeholder="address" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <button class="btn btn-success btn-block btn-lg">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Footer -->
+        <jsp:include flush="true" page="footer.jsp"></jsp:include>
             <!-- Scripts -->
             <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1/jquery-3.2.1.min.js"><\/script>')</script>
@@ -133,6 +78,16 @@
         <script src="${pageContext.request.contextPath}/assets/js/grumble/jquery.grumble.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
         <script>
+                // 校验2个密码是否一致
+                var validityPwd = function () {
+                    var pw = document.getElementById('inputPassword');
+                    var conpw = document.getElementById('inputConfirmPassword');
+                    if (pw.value !== conpw.value) {
+                        conpw.setCustomValidity('两次密码输入不一致');
+                    } else {
+                        conpw.setCustomValidity('');
+                    }
+                };
                 $(document).ready(function () {
                     $('#check-blue').on('ifChecked', function (event) {
                         $('#check-blue').iCheck('destory');

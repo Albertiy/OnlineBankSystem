@@ -12,8 +12,8 @@
         <servlet-class>cn.niit.web.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RegisteServlet</servlet-name>
-        <servlet-class>cn.niit.web.RegisteServlet</servlet-class>
+        <servlet-name>RegistServlet</servlet-name>
+        <servlet-class>cn.niit.web.RegistServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -24,8 +24,8 @@
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RegisteServlet</servlet-name>
-        <url-pattern>/RegisteServlet</url-pattern>
+        <servlet-name>RegistServlet</servlet-name>
+        <url-pattern>/RegistServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

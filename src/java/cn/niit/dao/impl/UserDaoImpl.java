@@ -26,9 +26,7 @@ public class UserDaoImpl implements UserDao {
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql     
         //Tip：这里的account_id为null
-        String sql = "insert into `CUSTOMER` ( `login_id`, `login_pw`, `name`,'address','email','contact_no') "
-                + "values                                          "
-                + "( ?, ?, ?,?, ?, ?) ";
+        String sql = "insert into CUSTOMER values( ?, ?, ?,?, ?, ?)";
         java.sql.PreparedStatement ps = null;
         //3.准备PreparedStatement对象
         try {
@@ -39,7 +37,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(3, u.getName());
             ps.setString(4, u.getAddress());
             ps.setString(5, u.getEmail());
-            ps.setString(6, u.getContact_no());//##############这是是直接以string的形式转换的，不知道可不可以###########
+            ps.setDouble(6, Double.parseDouble(u.getContact_no()));//##############这是是直接以string的形式转换的，不知道可不可以###########
 
             //5.执行sql
             int result = ps.executeUpdate();

@@ -22,7 +22,7 @@ import org.apache.commons.beanutils.BeanUtils;
  *
  * @author BearK
  */
-public class RegisteServlet extends HttpServlet {
+public class RegistServlet extends HttpServlet {
 
     private UserService us = new UserService();
 
@@ -39,36 +39,42 @@ public class RegisteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-		//记得要将这行代码加上
-		request.setCharacterEncoding("UTF-8");
-		//1 封装参数到User对象
-			User u = new User();
-			try {
-				BeanUtils.populate(u, request.getParameterMap());
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		//2 校验
-		Map<String, String> errors = CheckUtils.CheckUser(u);
-		if(errors.size()>0){
-			//有错误信息=> 将错误信息放到request域=>转发到注册页面显示
-			request.setAttribute("errors", errors);
-			request.getRequestDispatcher("/regist.jsp").forward(request, response);
-			return;
-		}
-		//3 调用Service保存
-		try {
-			us.regist(u);
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.getMessage());
-			request.getRequestDispatcher("/regist.jsp").forward(request, response);
-			return;
-		}
-		//4 根据结果,跳转到对应页面
-		response.sendRedirect(request.getContextPath()+"/login.jsp");
+            //记得要将这行代码加上
+            request.setCharacterEncoding("UTF-8");
+            //1 封装参数到User对象
+            User u = new User();
+            u.setLogin_id(request.getParameter("name"));
+            u.setLogin_pw(request.getParameter("password"));
+            u.setName(request.getParameter("realname"));
+            u.setEmail(request.getParameter("email"));
+            u.setContact_no(request.getParameter("tel"));
+            u.setAddress(request.getParameter("address"));
+//			try {
+//				BeanUtils.populate(u, request.getParameterMap());
+//			} catch (IllegalAccessException e) {
+//				e.printStackTrace();
+//			} catch (InvocationTargetException e) {
+//				e.printStackTrace();
+//			}
+            //2 校验
+            Map<String, String> errors = CheckUtils.CheckUser(u);
+            if (errors.size() > 0) {
+                //有错误信息=> 将错误信息放到request域=>转发到注册页面显示
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/signup.jsp").forward(request, response);
+                return;
+            }
+            //3 调用Service保存
+            try {
+                us.regist(u);
+            } catch (Exception e) {
+                e.printStackTrace();
+                request.setAttribute("error", e.getMessage());
+                request.getRequestDispatcher("/signup.jsp").forward(request, response);
+                return;
+            }
+            //4 根据结果,跳转到对应页面
+            response.sendRedirect(request.getContextPath() + "/loginin.jsp");
         }
     }
 
