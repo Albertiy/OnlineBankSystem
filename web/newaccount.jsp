@@ -1,9 +1,3 @@
-<%-- 
-    Document   : loginin
-    Created on : 2017-5-30, 15:29:14
-    Author     : YAN YUE
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,36 +10,35 @@
         <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
         <!-- Le styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/custom/loginin.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/loginin.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/assets/css/icheck/blue.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/assets/css/grumble/grumble.min.css" rel="stylesheet">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/background.jpg);background-repeat: repeat">
-        <jsp:include flush="true" page="header.jsp"></jsp:include>
+        <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
         <div class="container">
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Please sign in</h2>
-                    <label for="inputCustomerID" class="sr-only">Customer Id</label>
-                    <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus>
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <div class="form-control-static">
-                        <label class="checkbox">
-                            <div class="icheckbox_square-blue">
-                                <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                            </div>Remember me</label>
-                        <a id="forgetpw" href="#">forget your password?</a>
-                    </div>
-                    <div class="btn-block">
-                        <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
-                        <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
-                    </div>
-                </form>
-                <p id="location">Hi!</p>
-            </div> <!-- /container -->
+            <form class="form-">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <label for="inputCustomerID" class="sr-only">Customer Id</label>
+                <input type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div class="form-control-static">
+                    <label class="checkbox">
+                        <div class="icheckbox_square-blue">
+                            <input type="checkbox" id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                            <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                        </div>Remember me</label>
+                    <a id="forgetpw" href="#">forget your password?</a>
+                </div>
+                <div class="btn-block">
+                    <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
+                    <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
+                </div>
+            </form>
+        </div> <!-- /container -->
 
-            <!-- Footer -->
+        <!-- Footer -->
         <jsp:include flush="true" page="footer.jsp"></jsp:include>
 
             <!-- Scripts -->
@@ -80,8 +73,7 @@
                     $("#forgetpw").click(function (e) {
                         e.preventDefault();
                         var $me = $(this), interval;
-                        $me.grumble(
-                                {
+                        $me.grumble({
                                     text: 'Contact our support',
                                     angle: 75,
                                     distance: 100,
@@ -90,17 +82,6 @@
                                     hideAfter: false,
                                     //hasHideButton: true
                                     hideOnClick: true
-                                            //转动效果看这里
-                                            /*onShow: function(){
-                                             var angle = 45, dir = 1;
-                                             interval = setInterval(function(){
-                                             (angle > 135 ? (dir=-1, angle--) : ( angle < 45 ? (dir=1, angle++) : angle+=dir));
-                                             $me.grumble('adjust',{angle: angle});
-                                             },25);
-                                             },
-                                             onHide: function(){
-                                             clearInterval(interval);
-                                             }*/
                                 });
                     });
                 });

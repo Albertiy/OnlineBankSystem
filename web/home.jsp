@@ -23,9 +23,7 @@
     </head>
     <body>
         <!-- Navbar -->
-        <jsp:include flush="true" page="header.jsp">
-            <jsp:param name="nav" value="home.jsp"></jsp:param>
-        </jsp:include>
+        <jsp:include flush="true" page="header.jsp"></jsp:include>
 
         <!-- unslider -->
         <div class="banner">
@@ -70,36 +68,9 @@
             <script>window.jQuery || document.write('<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1/jquery-3.2.1.min.js"><\/script>')</script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/unslider/unslider.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
         <script>
                 $(document).ready(function () {
-                    $("#typical").click(function () {
-                        if ($('#top_navbar').hasClass('navbar-inverse'))
-                            $('#top_navbar').removeClass('navbar-inverse');
-                        if (!$('#top_navbar').hasClass('navbar-default'))
-                            $('#top_navbar').addClass('navbar-default');
-                        $('.footer').css("background-color", "#f5f5f5");
-                    });
-                    $("#night").click(function () {
-                        if ($('#top_navbar').hasClass('navbar-default'))
-                            $('#top_navbar').removeClass('navbar-default');
-                        if (!$('#top_navbar').hasClass('navbar-inverse'))
-                            $('#top_navbar').addClass('navbar-inverse');
-                        $('.footer').css("background-color", "#111111");
-                    });
-
-                    $("#location").ready(function () {
-                        var s = String(window.location);
-                        var a = s.lastIndexOf("/");
-                        var b = s.lastIndexOf(".");
-                        var s1 = "#" + s.substr(a + 1, b - a - 1);
-                        if (!$(s1).parent().hasClass("active"))
-                        {
-                            $(s1).parent().addClass("active");
-                        }
-                        //just for test
-                        //$("#location").text(s1);
-                    });
-
                     //幻灯片unslider插件
                     $(function () {
                         var unslider = $('.banner').unslider({
