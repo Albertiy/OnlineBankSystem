@@ -26,9 +26,7 @@ public class UserDaoImpl implements UserDao {
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql     
         //Tip：这里的account_id为null
-        String sql = "insert into `CUSTOMER` ( `login_id`, `login_pw`, `name`,'address','email','contact_no') "
-                + "values                                          "
-                + "( ?, ?, ?,?, ?, ?) ";
+        String sql = "insert into CUSTOMER values( ?, ?, ?,?, ?, ?)";
         java.sql.PreparedStatement ps = null;
         //3.准备PreparedStatement对象
         try {
@@ -39,7 +37,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(3, u.getName());
             ps.setString(4, u.getAddress());
             ps.setString(5, u.getEmail());
-            ps.setString(6, u.getContact_no());//##############这是是直接以string的形式转换的，不知道可不可以###########
+            ps.setDouble(6, Double.parseDouble(u.getContact_no()));//##############这是是直接以string的形式转换的，不知道可不可以###########
 
             //5.执行sql
             int result = ps.executeUpdate();
@@ -71,13 +69,13 @@ public class UserDaoImpl implements UserDao {
             //4.获得参数
             ps.setString(1, login_id);
             //5.执行查询
+            System.out.println("cn.niit.dao.impl.UserDaoImpl.findUserByName()");
             rs = ps.executeQuery();
             //6.处理查询结果返回集,将rs集合中的数据封装到User中去。
             if (rs.next()) {
                 u = new User();
                 u.setLogin_id(rs.getString("login_id"));
                 u.setLogin_pw(rs.getString("login_pw"));
-                u.setAccount_id(rs.getString("account_id"));//#####数据类型
                 u.setName(rs.getString("name"));
                 u.setAddress(rs.getString("address"));
                 u.setEmail(rs.getString("email"));
@@ -91,6 +89,7 @@ public class UserDaoImpl implements UserDao {
         } finally {
             //7.关闭资源,返回User
             JDBCUtils.close(conn, ps, rs);
+            
         }
 
     }
@@ -115,7 +114,6 @@ public class UserDaoImpl implements UserDao {
                 User u = new User();
                 u.setLogin_id(rs.getString("login_id"));
                 u.setLogin_pw(rs.getString("login_pw"));
-                u.setAccount_id(rs.getString("account_id"));//#####数据类型
                 u.setName(rs.getString("name"));
                 u.setAddress(rs.getString("address"));
                 u.setEmail(rs.getString("email"));

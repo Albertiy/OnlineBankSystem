@@ -40,20 +40,6 @@ public class User {
     }
 
     /**
-     * @return the account_id
-     */
-    public String getAccount_id() {
-        return account_id;
-    }
-
-    /**
-     * @param account_id the account_id to set
-     */
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {
@@ -110,13 +96,16 @@ public class User {
     }
     private String login_id;
     private String login_pw;
-    private String account_id;
     private String name;
     private String address;
     private String email;
     private String contact_no;
 
-    
+   
+    @Override
+    public String toString() {
+        return "User{" + "login_id=" + login_id + ", login_pw=" + login_pw + ", name=" + name + ", address=" + address + ", email=" + email + ", contact_no=" + contact_no + '}';
+    } 
     
     
     

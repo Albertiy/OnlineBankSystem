@@ -24,50 +24,51 @@
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <jsp:include flush="true" page="header.jsp"></jsp:include>
             <div class="container">
-                <form class="form-signin">
+                <form class="form-signin" action="/OnlineBankSystem/RegistServlet" method="post">
                     <legend class=""><h2 class="form-signin-heading">Sign Up for Online Bank System</h2></legend>
                     <div class="control-group">
                         <div class="controls">
                             <label for="inputCustomerID" class="control-label">Customer Id</label>
-                            <input minlength="6" size="16" type="text" id="inputCustomerID" class="form-control" placeholder="atleast 6 and atmost 16 char" required autofocus>
-                        </div>
-                        <div class="controls">
-                            <label class="control-label" for="inputPassword">Password</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
-                            <input oninput=validityPwd()" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
-                        </div>
+                            <input name="name" minlength="6" size="16" type="text" id="inputCustomerID" class="form-control" placeholder="atleast 6 and atmost 16 char" required autofocus>
+                            <font color="red" >${requestScope.error}</font>
                     </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <label class="form-control-static" for="inputName">Name</label>
-                            <input id="inputName" type="text" placeholder="Real Name" class="form-control">
-                        </div>
-                        
-                        <div class="controls">
-                            <label class="control-label" for="inputTelNum">Tel Num</label>
-                            <input id="inputTelNum" type="text" placeholder="tel number" class="form-control" required>
-                        </div>
-                        
-                        <div class="controls">
-                            <label class="control-label" for="inputEmail">E-mail</label>
-                            <input id="inputEmail" type="email" placeholder="email@sample.com" class="form-control">
-                        </div>
-                        
-                        <div class="controls">
-                            <label class="control-label" for="inputAddress">Address</label>
-                            <input id="inputAddress" class="form-control"  type="" placeholder="address" required>
-                        </div>
+                    <div class="controls">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
+                        <input name="confirm_password"oninput=validityPwd()" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
                     </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label"></label>
-                        <div class="controls">
-                            <button class="btn btn-success btn-block btn-lg">Submit</button>
-                        </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="form-control-static" for="inputName">Name</label>
+                        <input name="realname"id="inputName" type="text" placeholder="Real Name" class="form-control">
                     </div>
-                </form>
-            </div>
-            <!-- Footer -->
+
+                    <div class="controls">
+                        <label class="control-label" for="inputTelNum">Tel Num</label>
+                        <input name="tel" id="inputTelNum" type="text" placeholder="tel number" class="form-control" required>
+                    </div>
+
+                    <div class="controls">
+                        <label class="control-label" for="inputEmail">E-mail</label>
+                        <input name="email" id="inputEmail" type="email" placeholder="email@sample.com" class="form-control">
+                    </div>
+
+                    <div class="controls">
+                        <label class="control-label" for="inputAddress">Address</label>
+                        <input name="address" id="inputAddress" class="form-control"  type="" placeholder="address" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <button class="btn btn-success btn-block btn-lg">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Footer -->
         <jsp:include flush="true" page="footer.jsp"></jsp:include>
             <!-- Scripts -->
             <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
@@ -103,4 +104,3 @@
         </script>
     </body>
 </html>
-

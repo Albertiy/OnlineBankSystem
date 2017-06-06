@@ -32,11 +32,11 @@ public class UserService {
     public User login(User u) {
         //1.校验用户名是否存在
         User user = ud.findUserByName(u.getLogin_id());
-        if (user == null) {
-            //说明用户名不存在
-            throw new RuntimeException("用户名不存在！");
-        }
-        if (!user.getLogin_pw().equals(u.getLogin_pw())) {
+//        if (user == null) {
+//            //说明用户名不存在
+//            throw new RuntimeException("用户名不存在！");
+//        }
+        if (user == null||!user.getLogin_pw().equals(u.getLogin_pw())) {
             //说明密码不正确
             throw new RuntimeException("用户名错误或密码不正确！");
         }
