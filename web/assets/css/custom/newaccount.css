@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-6-5, 23:34:07
+    Author     : YAN YUE
+*/
+
+/*
+ * Placeholder dashboard ideas
+ */
+.container {
+    align-content: center;
+    text-align: center;
+}
+.placeholders {
+    text-align: center;
+    min-width: 300px;
+    max-width: 70%;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+}
+.placeholders h3 {
+  margin-bottom: 0;
+}
+
+.placeholder {
+    min-width: 260px;
+    min-height: 300px;
+    padding: 19px 29px 29px;
+    padding-bottom: 29px;
+    margin-bottom: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.glyphicon{
+    font-size: xx-large;
+}
