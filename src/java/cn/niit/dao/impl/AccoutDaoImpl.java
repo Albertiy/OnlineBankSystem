@@ -7,7 +7,6 @@ package cn.niit.dao.impl;
 
 import cn.niit.dao.AccountDao;
 import cn.niit.domain.Account;
-import cn.niit.domain.User;
 import cn.niit.utils.JDBCUtils;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,13 +25,13 @@ public class AccoutDaoImpl implements AccountDao {
         //1.获得连接
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql     
-        String sql = "insert into ACCOUNT values( ?, ?, ?,?, ?, ?,?)";
+        String sql = "insert into ACCOUNT values(?, ?,?, ?, ?,?)";
         java.sql.PreparedStatement ps = null;
         //3.准备PreparedStatement对象
         try {
             ps = conn.prepareStatement(sql);
             //4.填写参数
-            ps.setString(1, a.getAccount_id());
+//            ps.setString(1, a.getAccount_id());这里的account_id是自动生成的，不需要关心
             ps.setBoolean(2, a.getAccount_type());
             ps.setString(3, a.getAccount_pw());
             ps.setInt(4, a.getBalance());
@@ -74,7 +73,7 @@ public class AccoutDaoImpl implements AccountDao {
             //6.处理查询结果返回集,将rs集合中的数据封装到User中去。
             if (rs.next()) {
                 a = new Account();
-                a.setAccount_id(rs.getString("account_id"));
+                a.setAccount_id(Double.toString(rs.getDouble("account_id")));
                 a.setAccount_type(rs.getBoolean("account_type"));
                 a.setAccount_pw(rs.getString("account_pw"));
                 a.setBalance(rs.getInt("balance"));

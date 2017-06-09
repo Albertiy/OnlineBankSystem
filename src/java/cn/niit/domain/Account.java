@@ -67,7 +67,7 @@ public class Account {
     public void setLogin_id(String login_id) {
         this.login_id = login_id;
     }
-    private String account_id;
+    private String account_id;//这里的account_id是string类型的
     private boolean account_type;//0：Savings 1：Current
     private String account_pw;
     private int balance;
