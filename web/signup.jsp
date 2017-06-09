@@ -24,29 +24,30 @@
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <jsp:include flush="true" page="header.jsp"></jsp:include>
             <div class="container">
-                <form class="form-signin" action="/OnlineBankSystem/RegistServlet" method="post">
+                <form id="formSignUp" class="form-signin" action="/OnlineBankSystem/RegistServlet" method="post">
                     <legend class=""><h2 class="form-signin-heading">Sign Up for Online Bank System</h2></legend>
                     <div class="control-group">
                         <div class="controls">
                             <label for="inputCustomerID" class="control-label">Customer Id</label>
-                            <input name="name" minlength="6" size="16" type="text" id="inputCustomerID" class="form-control" placeholder="atleast 6 and atmost 16 char" required autofocus>
+                            <input name="name" minlength="6" maxlength="16" type="text" id="inputCustomerID" class="form-control" placeholder="atleast 6 and atmost 16 char" required autofocus>
                             <font color="red" >${requestScope.error}</font>
                     </div>
                     <div class="controls">
                         <label class="control-label" for="inputPassword">Password</label>
-                        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
-                        <input name="confirm_password"oninput=validityPwd()" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+                        <input name="password" id="inputPassword" minlength="6" maxlength="16" type="password" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" class="form-control" placeholder="Password (Num/Char/Underline)" required>
+                        <input name="confirm_password" id="inputConfirmPassword" minlength="6" maxlength="16" type="password" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" class="form-control" placeholder="Confirm Password" required>
+                        <span id="helpConfirmPW" class="help-inline" style=" color:red">Inconsistent with password</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <label class="form-control-static" for="inputName">Name</label>
-                        <input name="realname"id="inputName" type="text" placeholder="Real Name" class="form-control">
+                        <input name="realname"id="inputName" type="text" placeholder="Real Name" class="form-control" required="required">
                     </div>
 
                     <div class="controls">
                         <label class="control-label" for="inputTelNum">Tel Num</label>
-                        <input name="tel" id="inputTelNum" type="text" placeholder="tel number" class="form-control" required>
+                        <input name="tel" id="inputTelNum" type="text" placeholder="tel number" class="form-control" required="required">
                     </div>
 
                     <div class="controls">
@@ -56,14 +57,14 @@
 
                     <div class="controls">
                         <label class="control-label" for="inputAddress">Address</label>
-                        <input name="address" id="inputAddress" class="form-control"  type="" placeholder="address" required>
+                        <input name="address" id="inputAddress" class="form-control" placeholder="address" required>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label"></label>
                     <div class="controls">
-                        <button class="btn btn-success btn-block btn-lg">Submit</button>
+                        <button class="btn btn-success btn-block btn-lg" type="submit">Submit</button>
                     </div>
                 </div>
             </form>
@@ -78,29 +79,36 @@
         <script src="${pageContext.request.contextPath}/assets/js/grumble/jquery.grumble.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
         <script>
-                // 校验2个密码是否一致
-                var validityPwd = function () {
-                    var pw = document.getElementById('inputPassword');
-                    var conpw = document.getElementById('inputConfirmPassword');
-                    if (pw.value !== conpw.value) {
-                        conpw.setCustomValidity('两次密码输入不一致');
-                    } else {
-                        conpw.setCustomValidity('');
-                    }
-                };
                 $(document).ready(function () {
-                    $('#check-blue').on('ifChecked', function (event) {
-                        $('#check-blue').iCheck('destory');
-                        $(this).grumble({
-                            text: 'SORRY, I CANNOT!',
-                            angle: 295,
-                            distance: 10,
-                            showAfter: 100,
-                            type: 'alt-',
-                            hideAfter: 1100
-                        });
-                    });
+                    $("#helpConfirmPW").hide();
                 });
+                
+                $("#inputPassword").change(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        $("#helpConfirmPW").show();
+                    } else {
+                        $("#helpConfirmPW").hide();
+                    }
+                });
+                $("#inputConfirmPassword").change(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        $("#helpConfirmPW").show();
+                    } else {
+                        $("#helpConfirmPW").hide();
+                    }
+                });
+                $("#formSignUp").submit(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        return mySubmit(false);
+                    }
+                });
+                //掩体函数
+                function mySubmit(flag) {
+                    return flag;
+                }
         </script>
     </body>
 </html>

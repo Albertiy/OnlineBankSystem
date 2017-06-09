@@ -58,13 +58,13 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Create Account</h4>
                         </div>
-                        <form class="form-newaccount" action="#" method="post">
+                        <form id="formNewAccount" class="form-newaccount" action="#" method="post">
                             <div class="modal-body">
                                 <div class="control-group">
 
                                     <div class="controls">
                                         <label for="inputAccountType" class="control-label">Account Type</label>
-                                        <input name="account_type" minlength="6" size="16" type="text" id="inputAccountType" class="form-control" placeholder="Account Type" disabled="disabled" required>
+                                        <input name="account_type" minlength="6" size="16" type="text" id="inputAccountType" class="form-control" placeholder="Account Type" disabled="disabled" value="Current Account" required>
                                     </div>
 
                                     <div class="controls">
@@ -74,25 +74,31 @@
 
                                     <div class="controls">
                                         <label class="form-control-static" for="inputMinBalance">Min Balance</label>
-                                        <input name="min_balance" id="inputMinBalance" type="text" placeholder="Min Balance" class="form-control" disabled="disabled">
+                                        <div class="input-group">
+                                            <input name="min_balance" id="inputMinBalance" type="text" placeholder="Min Balance" class="form-control" disabled="disabled">
+                                            <span class="input-group-addon">￥</span>
+                                        </div>
                                     </div>
 
                                     <div class="controls">
                                         <label class="form-control-static" for="inputBalance">First Deposit</label>
-                                        <input name="balance" id="inputBalance" type="number" min="1" placeholder="Not less than min balance" class="form-control" required="required">
+                                        <div class="input-group">
+                                            <input name="balance" id="inputBalance" type="number" min="50" placeholder="Not less than min balance" class="form-control" required="required">
+                                            <span class="input-group-addon">￥</span>
+                                        </div>
                                     </div>
 
                                     <div class="controls">
                                         <label class="control-label" for="inputPassword">Account Password</label>
-                                        <input name="password" type="password" id="inputPassword" class="form-control"
+                                        <input name="password" type="password" id="inputPassword" class="form-control" maxlength="6"
                                                placeholder="Enter Password (six numbers)" size="6" pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" required>
                                     </div>
-                                    
-                                    <div class="controls">
-                                        <input name="confirm_password"oninput=validityPwd()" type="password" id="inputConfirmPassword"
-                                               class="form-control" placeholder="Confirm Password" size="6" pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" required>
-                                    </div>
 
+                                    <div class="controls">
+                                        <input name="confirm_password" type="password" id="inputConfirmPassword" class="form-control" maxlength="6"
+                                               placeholder="Confirm Password" size="6" pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" required>
+                                        <span id="helpConfirmPW" class="help-inline" style=" color:red">Inconsistent with password</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -116,13 +122,42 @@
         <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
         <script>
                 $(document).ready(function () {
-                    $("#btnCurrent").click(function(){
-                        $("#inputAccountType").text("Current Account");
+                    $("#btnCurrent").click(function () {
+                        $("#inputAccountType").val("Current Account");
                     });
-                    $("#btnSaving").click(function(){
-                        $("#inputAccountType").text("Saving Account");
+                    $("#btnSaving").click(function () {
+                        $("#inputAccountType").val("Saving Account");
                     });
+                    $("#inputInterestRate").val("0.35%");
+                    $("#inputMinBalance").val("50");
+                    $("#helpConfirmPW").hide();
                 });
+                $("#inputPassword").change(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        $("#helpConfirmPW").show();
+                    } else {
+                        $("#helpConfirmPW").hide();
+                    }
+                });
+                $("#inputConfirmPassword").change(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        $("#helpConfirmPW").show();
+                    } else {
+                        $("#helpConfirmPW").hide();
+                    }
+                });
+                $("#formNewAccount").submit(function () {
+                    if ($("#inputPassword").val() !== $("#inputConfirmPassword").val())
+                    {
+                        return mySubmit(false);
+                    }
+                });
+                //掩体函数
+                function mySubmit(flag) {
+                    return flag;
+                }
         </script>
     </body>
 </html>

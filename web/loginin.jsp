@@ -55,7 +55,7 @@
                 </div>
                 <div class="btn-block">
                     <button class="btn btn-lg btn-block btn-primary" type="submit">Sign in</button>
-                    <button class="btn btn-lg btn-block btn-success" type="button">Sign up</button>
+                    <button class="btn btn-lg btn-block btn-success" type="button" onclick="window.location.href='signup.jsp'">Sign up</button>
                 </div>
                 
             </form>
