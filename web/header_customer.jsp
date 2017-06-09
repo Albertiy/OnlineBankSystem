@@ -39,9 +39,9 @@
                     <a class="btn btn-warning" href="#"><i class="icon-user icon-white"></i> User</a>
                     <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="icon-pencil"></i> My account</a></li>
-                        <li><a href="#"><i class="icon-trash"></i> Transaction</a></li>
-                        <li><a href="#"><i class="icon-ban-circle"></i> Loan</a></li>
+                        <li><a href="#"><i class="icon-pencil"></i> User Info</a></li>
+                        <!--<li><a href="#"><i class="icon-trash"></i> Transaction</a></li>
+                        <li><a href="#"><i class="icon-ban-circle"></i> Loan</a></li>-->
                         <li class="divider"></li>
                         <li><a href="#"><i class="i"></i> Sign out</a></li>
                     </ul>
