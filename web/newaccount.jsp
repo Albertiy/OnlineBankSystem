@@ -16,12 +16,11 @@
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
-        <div class="container-fluid placeholders">
-            <legend><h1 class=" text-primary">Choose the Type of Your Account</h1></legend>
+            <div class="container-fluid placeholders">
+                <legend><h1 class=" text-primary">Choose the Type of Your Account</h1></legend>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <button class="btn-primary placeholder">
-                            
+                        <button id="btnCurrent" class="btn-primary placeholder" data-toggle="modal" data-target="#myModal">
                             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
                             <h3>Current Account</h3>
                             <h4>Support:</h4>
@@ -36,7 +35,7 @@
                         </button>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <button class="btn-success placeholder">
+                        <button id="btnSaving" class="btn-success placeholder" data-toggle="modal" data-target="#myModal">
                             <span style="font-size:xx-large" class="glyphicon glyphicon-piggy-bank"></span>
                             <h3>Saving Account</h3>
                             <h4>Support:</h4>
@@ -49,9 +48,63 @@
                         </button>
                     </div>
                 </div>
-        </div> <!-- /container -->
+            </div> <!-- /container -->
 
-        <!-- Footer -->
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+                        </div>
+                        <form class="form-newaccount" action="#" method="post">
+                            <div class="modal-body">
+                                <div class="control-group">
+
+                                    <div class="controls">
+                                        <label for="inputAccountType" class="control-label">Account Type</label>
+                                        <input name="account_type" minlength="6" size="16" type="text" id="inputAccountType" class="form-control" placeholder="Account Type" disabled="disabled" required>
+                                    </div>
+
+                                    <div class="controls">
+                                        <label class="control-label" for="inputInterestRate">Interest Rate</label>
+                                        <input name="interest_rate" id="inputInterestRate" type="text" placeholder="tel number" class="form-control"disabled="disabled">
+                                    </div>
+
+                                    <div class="controls">
+                                        <label class="form-control-static" for="inputMinBalance">Min Balance</label>
+                                        <input name="min_balance" id="inputMinBalance" type="text" placeholder="Min Balance" class="form-control" disabled="disabled">
+                                    </div>
+
+                                    <div class="controls">
+                                        <label class="form-control-static" for="inputBalance">First Deposit</label>
+                                        <input name="balance" id="inputBalance" type="number" min="1" placeholder="Not less than min balance" class="form-control" required="required">
+                                    </div>
+
+                                    <div class="controls">
+                                        <label class="control-label" for="inputPassword">Account Password</label>
+                                        <input name="password" type="password" id="inputPassword" class="form-control"
+                                               placeholder="Enter Password (six numbers)" size="6" pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" required>
+                                    </div>
+                                    
+                                    <div class="controls">
+                                        <input name="confirm_password"oninput=validityPwd()" type="password" id="inputConfirmPassword"
+                                               class="form-control" placeholder="Confirm Password" size="6" pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
         <jsp:include flush="true" page="footer.jsp"></jsp:include>
 
             <!-- Scripts -->
@@ -62,9 +115,13 @@
         <script src="${pageContext.request.contextPath}/assets/js/grumble/jquery.grumble.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
         <script>
-                //document.load();
-                //function check_blue(){$('#check-blue').iCheck('check');}
                 $(document).ready(function () {
+                    $("#btnCurrent").click(function(){
+                        $("#inputAccountType").text("Current Account");
+                    });
+                    $("#btnSaving").click(function(){
+                        $("#inputAccountType").text("Saving Account");
+                    });
                 });
         </script>
     </body>
