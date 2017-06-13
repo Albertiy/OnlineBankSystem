@@ -11,6 +11,13 @@ package cn.niit.domain;
  */
 public class User {
 
+    private String login_id;
+    private String login_pw;
+    private String name;
+    private String address;
+    private String email;
+    private String contact_no;
+
     /**
      * @return the login_id
      */
@@ -94,19 +101,10 @@ public class User {
     public void setContact_no(String contact_no) {
         this.contact_no = contact_no;
     }
-    private String login_id;
-    private String login_pw;
-    private String name;
-    private String address;
-    private String email;
-    private String contact_no;
 
-   
     @Override
     public String toString() {
         return "User{" + "login_id=" + login_id + ", login_pw=" + login_pw + ", name=" + name + ", address=" + address + ", email=" + email + ", contact_no=" + contact_no + '}';
-    } 
-    
-    
-    
+    }
+
 }

@@ -1,3 +1,4 @@
+<%@ include file="testsession.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,8 @@
         <link href="${pageContext.request.contextPath}/assets/css/grumble/grumble.min.css" rel="stylesheet">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
+        
+        
         <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
             <div class="container-fluid placeholders">
                 <legend><h1 class=" text-primary">Choose the Type of Your Account</h1></legend>
@@ -58,24 +61,24 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Create Account</h4>
                         </div>
-                        <form id="formNewAccount" class="form-newaccount" action="#" method="post">
+                        <form id="formNewAccount" class="form-newaccount" action="/OnlineBankSystem/NewAccountServlet" method="post">
                             <div class="modal-body">
                                 <div class="control-group">
 
                                     <div class="controls">
                                         <label for="inputAccountType" class="control-label">Account Type</label>
-                                        <input name="account_type" minlength="6" size="16" type="text" id="inputAccountType" class="form-control" placeholder="Account Type" disabled="disabled" value="Current Account" required>
+                                        <input name="account_type" minlength="6" size="16" type="text" id="inputAccountType" class="form-control" placeholder="Account Type"  value="Current Account" required readonly>
                                     </div>
 
                                     <div class="controls">
                                         <label class="control-label" for="inputInterestRate">Interest Rate</label>
-                                        <input name="interest_rate" id="inputInterestRate" type="text" placeholder="tel number" class="form-control"disabled="disabled">
+                                        <input name="interest_rate" id="inputInterestRate" type="text" placeholder="tel number" class="form-control"readonly>
                                     </div>
 
                                     <div class="controls">
                                         <label class="form-control-static" for="inputMinBalance">Min Balance</label>
                                         <div class="input-group">
-                                            <input name="min_balance" id="inputMinBalance" type="text" placeholder="Min Balance" class="form-control" disabled="disabled">
+                                            <input name="min_balance" id="inputMinBalance" type="text" placeholder="Min Balance" class="form-control" readonly>
                                             <span class="input-group-addon">￥</span>
                                         </div>
                                     </div>
@@ -103,7 +106,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <input type="submit" class="btn btn-success" value="Submit"/>
                             </div>
                         </form>
                     </div>

@@ -3,7 +3,7 @@
     Created on : 2017-6-12, 14:24:39
     Author     : YAN YUE
 --%>
-
+<%@ include file="testsession.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
                 <div class="jumbotron">
                     <h1>Login Success</h1>
                     <p class="">You doesn't have an account yet, click the button below to create an account.</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">New Account</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="/OnlineBankSystem/newaccount.jsp" role="button">New Account</a></p>
                 </div>
             </div> <!-- /container -->
 

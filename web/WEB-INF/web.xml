@@ -15,6 +15,10 @@
         <servlet-name>RegistServlet</servlet-name>
         <servlet-class>cn.niit.web.RegistServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewAccountServlet</servlet-name>
+        <servlet-class>cn.niit.web.NewAccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>RegistServlet</servlet-name>
         <url-pattern>/RegistServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewAccountServlet</servlet-name>
+        <url-pattern>/NewAccountServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

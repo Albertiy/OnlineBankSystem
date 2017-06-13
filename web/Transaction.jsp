@@ -3,7 +3,7 @@
     Created on : Jun 9, 2017, 2:42:40 PM
     Author     : Damon
 --%>
-
+<%@ include file="testsession.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -32,12 +32,12 @@ public class AccoutDaoImpl implements AccountDao {
             ps = conn.prepareStatement(sql);
             //4.填写参数
 //            ps.setString(1, a.getAccount_id());这里的account_id是自动生成的，不需要关心
-            ps.setBoolean(2, a.getAccount_type());
-            ps.setString(3, a.getAccount_pw());
-            ps.setInt(4, a.getBalance());
-            ps.setInt(5, a.getMin_balance());
-            ps.setDouble(6, a.getInterest_rate());
-            ps.setString(7, a.getLogin_id());
+            ps.setBoolean(1, a.getAccount_type());
+            ps.setString(2, a.getAccount_pw());
+            ps.setInt(3, a.getBalance());
+            ps.setInt(4, a.getMin_balance());
+            ps.setDouble(5, a.getInterest_rate());
+            ps.setString(6, a.getLogin_id());
 
             //5.执行sql
             int result = ps.executeUpdate();

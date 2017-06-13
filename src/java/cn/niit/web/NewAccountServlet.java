@@ -5,32 +5,25 @@
  */
 package cn.niit.web;
 
-import cn.niit.dao.AccountDao;
-import cn.niit.dao.impl.AccoutDaoImpl;
 import cn.niit.domain.Account;
 import cn.niit.domain.User;
-import cn.niit.service.UserService;
-import cn.niit.utils.CheckUtils;
+import cn.niit.service.AccountService;
+import cn.niit.utils.ArithUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URLEncoder;
-import java.util.Map;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.beanutils.BeanUtils;
 
 /**
  *
  * @author BearK
  */
-public class LoginServlet extends HttpServlet {
+public class NewAccountServlet extends HttpServlet {
 
-    private UserService us = new UserService();
-    private AccountDao ad = new AccoutDaoImpl();
+    private AccountService as = new AccountService();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,55 +38,53 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            //记得先加上这行代码
+            //记得要将这行代码加上
             request.setCharacterEncoding("UTF-8");
-            //2.2设置“记住我”功能
-//                RemberUtils.remember(request, response);
-            //1封装参数
-            User u = new User();
-//			BeanUtils.populate(u, request.getParameterMap());
-            u.setLogin_id(request.getParameter("name"));
-            u.setLogin_pw(request.getParameter("password"));
+            //1 封装参数到Account对象
+            Account a = new Account();
+            //设置账户类型
+            String account_typeString = request.getParameter("account_type");
 
-            //2非空校验
-            Map<String, String> errors = CheckUtils.CheckUser(u);
-            if (errors.size() > 0) {
-                //有错误，保存异常到request中，并且转发到登录页面
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/loginin.jsp").forward(request, response);//#######登陆界面
-                return;
+            if (account_typeString.equalsIgnoreCase("Saving Account")) {
+                a.setAccount_type(false);
+            } else {
+                a.setAccount_type(true);
             }
+            //设置账户利率
+            String interest_rateString = request.getParameter("interest_rate");
+            String substring = interest_rateString.substring(0,interest_rateString.length()-1);
+            double interest_rate = ArithUtil.div(Double.parseDouble(substring), 100);
+            a.setInterest_rate(interest_rate);
+            //设置账户最小金额
+            a.setMin_balance(Integer.parseInt(request.getParameter("min_balance")));
+            //设置账户金额
+            a.setBalance(Integer.parseInt(request.getParameter("balance")));//用户的金额支付问题。。。。。
+            //设置账户密码
+            a.setAccount_pw(request.getParameter("password"));
+            //设置用户登录id
+            User sessionUser = (User) request.getSession().getAttribute("user");
+            String login_id = sessionUser.getLogin_id();
+            a.setLogin_id(login_id);
 
-            User user = null;
+//            //2 校验
+//            Map<String, String> errors = CheckUtils.CheckUser(u);
+//            if (errors.size() > 0) {
+//                //有错误信息=> 将错误信息放到request域=>转发到注册页面显示
+//                request.setAttribute("errors", errors);
+//                request.getRequestDispatcher("/signup.jsp").forward(request, response);
+//                return;
+//            }
+            //3 调用Service保存
             try {
-
-                //3.调用service登录
-                user = us.login(u);
+                as.regist(a);
             } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("error", e.getMessage());
-                request.getRequestDispatcher("/loginin.jsp").forward(request, response);
+                request.getRequestDispatcher("/newaccount.jsp").forward(request, response);
                 return;
             }
-            //4.登陆成功，将user保存到Session中进行存储
-            request.getSession().setAttribute("user", user);
-            //5.跳转到列表servlet---------------------------------登陆成功跳转到相应界面
-            //5.1获得保存在session里面的user对象
-            User sessionUser = (User) request.getSession().getAttribute("user");
-            //5.2通过保存的User对象得到用户名login_id
-            String login_id = sessionUser.getLogin_id();
-            //5.3通过得到的login_id判断是否拥有银行卡账户
-            Account findAccountByName = ad.findAccountByName(login_id);
-            if (findAccountByName == null)//5.3.1如果没有银行卡账户，则跳转到postLogin页面
-            {
-                request.getRequestDispatcher("/postLogin.jsp").forward(request, response);
-
-            } else {//5.3.2否则就跳转到Operation页面
-                request.getRequestDispatcher("/Operation.jsp").forward(request, response);
-            }
-            //response.sendRedirect(request.getContextPath()+"/ListServlet");//需要先重定向到servlet中进行列表数据的准备
-
+            //4 根据结果,跳转到对应页面
+            response.sendRedirect(request.getContextPath() + "/Operation.jsp");
         }
     }
 
