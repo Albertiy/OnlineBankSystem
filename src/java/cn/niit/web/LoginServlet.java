@@ -92,8 +92,8 @@ public class LoginServlet extends HttpServlet {
             {
                 request.getRequestDispatcher("/postLogin.jsp").forward(request, response);
 
-            } else {//5.3.2否则就跳转到Operation页面
-                request.getRequestDispatcher("/Operation.jsp").forward(request, response);
+            } else {//5.3.2否则就跳转到operations页面
+                request.getRequestDispatcher("/operations.jsp").forward(request, response);
             }
             //response.sendRedirect(request.getContextPath()+"/ListServlet");//需要先重定向到servlet中进行列表数据的准备
 

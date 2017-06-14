@@ -84,7 +84,7 @@ public class NewAccountServlet extends HttpServlet {
                 return;
             }
             //4 根据结果,跳转到对应页面
-            response.sendRedirect(request.getContextPath() + "/Operation.jsp");
+            response.sendRedirect(request.getContextPath() + "/operations.jsp");
         }
     }
 

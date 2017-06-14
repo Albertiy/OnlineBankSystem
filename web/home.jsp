@@ -29,7 +29,7 @@
         <div class="banner">
             <ul>
                 <li style="background-image: url('${pageContext.request.contextPath}/assets/img/sunset.jpg');">
-                    <div class="inner">
+                    <div class="inner ">
                         <h1>Welcome to Online Bank</h1>
                         <p>
                             <a class="btn btn-lg btn-info" href="signup.jsp" role="button">SIGN UP NOW &raquo;</a>
