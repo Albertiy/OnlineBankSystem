@@ -11,6 +11,7 @@ import cn.niit.domain.Account;
 import cn.niit.domain.User;
 import cn.niit.service.UserService;
 import cn.niit.utils.CheckUtils;
+import cn.niit.utils.RememberUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -48,8 +49,10 @@ public class LoginServlet extends HttpServlet {
 
             //记得先加上这行代码
             request.setCharacterEncoding("UTF-8");
+           
+            
             //2.2设置“记住我”功能
-//                RemberUtils.remember(request, response);
+                RememberUtils.remember(request, response);
             //1封装参数
             User u = new User();
 //			BeanUtils.populate(u, request.getParameterMap());

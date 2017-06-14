@@ -8,7 +8,7 @@ package cn.niit.web;
 import cn.niit.domain.Account;
 import cn.niit.domain.User;
 import cn.niit.service.AccountService;
-import cn.niit.utils.ArithUtil;
+import cn.niit.utils.ArithUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -53,7 +53,7 @@ public class NewAccountServlet extends HttpServlet {
             //设置账户利率
             String interest_rateString = request.getParameter("interest_rate");
             String substring = interest_rateString.substring(0,interest_rateString.length()-1);
-            double interest_rate = ArithUtil.div(Double.parseDouble(substring), 100);
+            double interest_rate = ArithUtils.div(Double.parseDouble(substring), 100);
             a.setInterest_rate(interest_rate);
             //设置账户最小金额
             a.setMin_balance(Integer.parseInt(request.getParameter("min_balance")));

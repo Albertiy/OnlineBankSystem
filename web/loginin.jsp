@@ -3,7 +3,25 @@
     Created on : 2017-5-30, 15:29:14
     Author     : YAN YUE
 --%>
-
+<%@page import="java.net.URLDecoder"%>
+<%  
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+String password="";  
+String name="";  
+String checked="";  
+Cookie[] cookies = request.getCookies();        //取出cookie对象组  
+for(int i = 0; cookies != null && i < cookies.length;i++){  
+         Cookie cookie = cookies[i];       //  取出其中的一个对象，含有name ,value  
+         if(cookie != null && "name".equals(cookie.getName())){      //获取第一个cookie对象的name  
+             name = URLDecoder.decode(cookie.getValue(), "UTF-8");//进行解码  
+             checked = "checked";  
+         }  
+         if(cookie != null && "password".equals(cookie.getName())){  
+             password = cookie.getValue();  
+         }  
+}  
+%>  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,11 +46,11 @@
                     <h2 class="form-signin-heading">Please sign in</h2>
                     <div>
                         <label for="inputCustomerID" class="sr-only">Customer Id</label>
-                        <input name="name" value="${cookie.remember.value}"  type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus><font color="red" >${requestScope.errors.name}</font>
+                        <input name="name" value="<%=name%>"  type="text" id="inputCustomerID" class="form-control" placeholder="Customer Id" required autofocus><font color="red" >${requestScope.errors.name}</font>
                 </div>
                     <div>
                         <label for="inputPassword" class="sr-only">Password</label>
-                        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>${requestScope.errors.password}</font>
+                        <input name="password" value="<%=password%>" type="password" id="inputPassword" class="form-control" placeholder="Password" required>${requestScope.errors.password}</font>
                 </div>
                 
                 
@@ -44,9 +62,8 @@
                         <div class="icheckbox_square-blue">
                            
                             </script>  
-                            
-                            
-                            <input name="remember" type="checkbox"  id="check-blue" value="remember-me" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                        
+                            <input name="remember" type="checkbox"  id="check-blue" value="yes" <%=checked%> style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
 
                             
                             <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
@@ -79,14 +96,14 @@
                 $(document).ready(function () {
                     $('#check-blue').on('ifChecked', function (event) {
                         $('#check-blue').iCheck('destory');
-                        $(this).grumble({
-                            text: 'SORRY, I CANNOT!',
-                            angle: 295,
-                            distance: 10,
-                            showAfter: 100,
-                            type: 'alt-',
-                            hideAfter: 1100
-                        });
+//                        $(this).grumble({
+//                            text: 'SORRY, I CANNOT!',
+//                            angle: 295,
+//                            distance: 10,
+//                            showAfter: 100,
+//                            type: 'alt-',
+//                            hideAfter: 1100
+//                        });
                     });
                     $('#check-blue').iCheck({
                         checkboxClass: 'icheckbox_square-blue',

@@ -11,10 +11,10 @@ import java.math.BigDecimal;
  *
  * @author BearK
  */
-public class ArithUtil {
+public class ArithUtils {
       private static final int DEF_DIV_SCALE=10;  
       
-    private ArithUtil(){}  
+    private ArithUtils(){}  
       
     public static double add(double d1,double d2){  
         BigDecimal b1=new BigDecimal(Double.toString(d1));  
