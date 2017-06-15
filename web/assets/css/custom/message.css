@@ -1,0 +1,50 @@
+body{
+    height: 100%;align-content: center;text-align: center;
+    /*background-image: url(./assets/img/bg2.jpg);在css中使用的路径很麻烦，所以在jsp中用*/
+    background-repeat:no-repeat;
+    background-color:#efefef; 
+    background-repeat:no-repeat;
+    background-origin:border-box;
+    background-size:auto 100%;
+    background-attachment: fixed;
+    -moz-background-size:auto 100%;
+}
+
+div .message {
+    background-color:#ffffff;
+    max-width: 650px;
+    min-width: 260px;
+    min-height: 300px;
+    height: auto;
+    padding: 19px 29px 29px;
+    padding-bottom: 29px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+div .main{
+    background-color:#f8f8f8;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 19px 29px 29px;
+    padding-bottom: 29px;
+    height: auto;
+    max-width: 90%;
+    min-width: 260px;
+    min-height: 450px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+div .basic-group{
+    min-width: 260px;
+    width:300px !important;
+}

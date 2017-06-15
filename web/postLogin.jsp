@@ -3,7 +3,7 @@
     Created on : 2017-6-12, 14:24:39
     Author     : YAN YUE
 --%>
-<%@ include file="testsession.jsp"%>
+<!--%@ include file="testsession.jsp"%-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,14 +16,16 @@
         <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
         <!-- Le styles -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/custom/message.css" rel="stylesheet">
     </head>
-    <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
+    <body style="background-image: url(./assets/img/bg2.jpg);">
         <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
             <div class="container">
-                <div class="jumbotron">
+                <div class="message">
                     <h1>Login Success</h1>
-                    <p class="">You doesn't have an account yet, click the button below to create an account.</p>
-                    <p><a class="btn btn-primary btn-lg" href="/OnlineBankSystem/newaccount.jsp" role="button">New Account</a></p>
+                    <p style="font-size: medium">You doesn't have an account yet, click the button below to create an account.</p>
+                    <p>&nbsp;</p><p>&nbsp;</p>
+                    <p style="float:right"><a class="btn btn-primary btn-lg" href="/OnlineBankSystem/newaccount.jsp" role="button">New Account</a></p>
                 </div>
             </div> <!-- /container -->
 

@@ -12,7 +12,9 @@
         <title>Miss Login &middot;OnlineBankSystem</title>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
         <link rel="icon" href="${pageContext.request.contextPath}/assets/img/OnlineBankICO.png">
+        <!-- CSS -->
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/custom/message.css" rel="stylesheet">
         <script type="text/javascript">
             var i = 4;
             function shownum() {
@@ -29,30 +31,11 @@
             }
         </script>
     </head>
-    <body onload="shownum()" style="height: 100%;align-content: center;text-align: center;
-          background-image: url(./assets/img/bg2.jpg);
-          background-repeat:no-repeat;
-          background-color:#efefef; 
-          background-repeat:no-repeat;
-          background-origin:border-box;
-          background-size:auto 100%;
-          background-attachment: fixed;
-          -moz-background-size:auto 100%;">
+    <body onload="shownum()" style="background-image: url(./assets/img/bg2.jpg);">
         <div class="container">
             <%
                 if (session.getAttribute("user") == null) {%>
-            <div style="
-                 background-color:#ffffff;
-                 min-width: 260px;
-                 min-height: 300px;
-                 padding: 19px 29px 29px;
-                 padding-bottom: 29px;
-                 margin-top: 10px;
-                 margin-bottom: 10px;
-                 border: 1px solid #e5e5e5;
-                 border-radius: 5px;
-                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                 ">
+            <div class="message">
                 <h1>Please Login First！</h1>
                 <p id="time" style="font-size:large"></p>
                 <p style="font-size:    large">If there is no automatic jump, please click <a href="loginin.jsp">Here</a></p>
@@ -62,24 +45,13 @@
                 return;
             } else {
             %>
-            <div style="
-                 background-color:#ffffff;
-                 min-width: 260px;
-                 min-height: 300px;
-                 padding: 19px 29px 29px;
-                 padding-bottom: 29px;
-                 margin-top: 10px;
-                 margin-bottom: 10px;
-                 border: 1px solid #e5e5e5;
-                 border-radius: 5px;
-                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                 ">
+            <div class="message">
                 <h1>Welcome Back,<%=session.getAttribute("user")%></h1>
                 <p id="time2" style="font-size:large"></p>
                 <p style="font-size:large">If there is no automatic jump, please click <a href="operation.jsp">Here</a></p>
             </div>
             <%
-                    response.setHeader("refresh", "3;URL=operation.jsp");
+                    response.setHeader("refresh", "3;URL=operations.jsp");
                 }
             %>
         </div>

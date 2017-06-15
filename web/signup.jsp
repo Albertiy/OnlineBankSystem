@@ -42,22 +42,26 @@
                 <div class="control-group">
                     <div class="controls">
                         <label class="form-control-static" for="inputName">Name</label>
-                        <input name="realname"id="inputName" type="text" placeholder="Real Name" class="form-control" required="required">
+                        <input name="realname"id="inputName" type="text" minlength="2" maxlength="32"
+                               placeholder="Real Name" class="form-control" required="required">
                     </div>
 
                     <div class="controls">
                         <label class="control-label" for="inputTelNum">Tel Num</label>
-                        <input name="tel" id="inputTelNum" type="text" placeholder="tel number" class="form-control" required="required">
+                        <input name="tel" id="inputTelNum" type="tel" minlength="8" maxlength="13" pattern="[0-9]*"
+                               placeholder="tel number" class="form-control" required="required">
                     </div>
 
                     <div class="controls">
                         <label class="control-label" for="inputEmail">E-mail</label>
-                        <input name="email" id="inputEmail" type="email" placeholder="email@sample.com" class="form-control">
+                        <input name="email" id="inputEmail" type="email" maxlength="32"
+                               placeholder="email@sample.com" class="form-control">
                     </div>
 
                     <div class="controls">
                         <label class="control-label" for="inputAddress">Address</label>
-                        <input name="address" id="inputAddress" class="form-control" placeholder="address" required>
+                        <input name="address" id="inputAddress" maxlength="256"
+                               class="form-control" placeholder="address" required>
                     </div>
                 </div>
 
