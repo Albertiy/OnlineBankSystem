@@ -19,6 +19,10 @@
         <servlet-name>NewAccountServlet</servlet-name>
         <servlet-class>cn.niit.web.NewAccountServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountOperationServlet</servlet-name>
+        <servlet-class>cn.niit.web.AccountOperationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -34,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>NewAccountServlet</servlet-name>
         <url-pattern>/NewAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountOperationServlet</servlet-name>
+        <url-pattern>/AccountOperationServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

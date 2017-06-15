@@ -43,17 +43,8 @@
             <%
                 response.setHeader("refresh", "3;URL=loginin.jsp");
                 return;
-            } else {
-            %>
-            <div class="message">
-                <h1>Welcome Back,<%=session.getAttribute("user")%></h1>
-                <p id="time2" style="font-size:large"></p>
-                <p style="font-size:large">If there is no automatic jump, please click <a href="operation.jsp">Here</a></p>
-            </div>
-            <%
-                    response.setHeader("refresh", "3;URL=operations.jsp");
-                }
-            %>
+               } %>
+
         </div>
     </body>
 </html>

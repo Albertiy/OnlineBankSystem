@@ -23,12 +23,12 @@
 
                     <!-- Core Code -->
                     <div class="center-block" style="max-width: 350px">
-                        <form id="formChangePW" action="" method="post">
+                        <form id="formChangePW" action="/OnlineBankSystem/UserPsdModifyServlet" method="post">
                             <div class="input-group ">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                 </div>
-                                <input class="form-control" type="text" readonly="readonly" value="user123">
+                                <input class="form-control" name="login_id" type="text" readonly="readonly" value="${sessionScope.user.login_id}">
                             </div>
                             <br>
                             <div class="input-group ">
@@ -53,7 +53,7 @@
                             </div>
                             <br>
                             <div class="controls" style="text-align: right">
-                                <a class="btn btn-warning btn-lg" role="button" href="operations.jsp">Cancel</a>
+                                <a class="btn btn-warning btn-lg" role="button" href="/OnlineBankSystem/AccountOperationServlet">Cancel</a>
                                 <button id="btnSubmit" class="btn btn-primary btn-lg" type="submit">Change</button>
                             </div>
                         </form>

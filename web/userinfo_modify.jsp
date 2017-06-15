@@ -1,4 +1,4 @@
-<!--%@ include file="testsession.jsp"%-->
+<%@ include file="testsession.jsp"%><!--%@ include file="testsession.jsp"%-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,19 +23,19 @@
 
                     <!-- Core Code -->
                     <div class="center-block" style="max-width: 350px">
-                        <form action="" method="post">
+                        <form action="/OnlineBankSystem/UserInfoModifyServlet" method="post">
                             <div class="input-group ">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                 </div>
-                                <input class="form-control" type="text" readonly="readonly" value="${sessionScope.user.login_id}">
+                                <input class="form-control" type="text" name="login_id" readonly="readonly" value="${sessionScope.user.login_id}">
                             </div>
                             <br>
                             <div class="input-group ">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
-                                <input class="form-control" type="text" id="inputName" minlength="2" maxlength="32"
+                                <input class="form-control" type="text" name="name" id="inputName" minlength="2" maxlength="32"
                                        placeholder="Real Name" required="required" value="${sessionScope.user.name}">
                             </div>
 
@@ -43,7 +43,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-home"></span>
                                 </div>
-                                <input class="form-control" type="text" id="inputTelNum" maxlength="256"
+                                <input class="form-control" type="text" name="address" id="inputTelNum" maxlength="256"
                                        placeholder="tel number" required="required" value="${sessionScope.user.address}">
                             </div>
 
@@ -51,7 +51,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope"></span>
                                 </div>
-                                <input class="form-control" type="email" id="inputEmail" maxlength="32"
+                                <input class="form-control" type="email" name="email" id="inputEmail" maxlength="32"
                                        placeholder="email@sample.com" value="${sessionScope.user.email}">
                             </div>
 
@@ -59,7 +59,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-earphone"></span>
                                 </div>
-                                <input class="form-control" id="inputTelNum" type="tel" minlength="8" maxlength="13" pattern="[0-9]*"
+                                <input class="form-control" id="inputTelNum" name="contact_no" type="tel" minlength="8" maxlength="13" pattern="[0-9]*"
                                        placeholder="tel number" required="required" value="${sessionScope.user.contact_no}">
                             </div>
                             <br>

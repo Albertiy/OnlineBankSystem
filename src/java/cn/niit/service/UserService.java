@@ -44,6 +44,18 @@ public class UserService {
         return user;
     }
 
+    public User update(User u)
+    {
+        User user=ud.updateUserInfo(u);
+        return user;
+    }
+    
+        public User changePsd(User u)
+    {
+        User user=ud.updateUserPsd(u);
+        return user;
+    }
+        
     public List<User> getAllUsers() {
         List<User> allUsers = ud.getAllUsers();
         return allUsers;

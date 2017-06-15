@@ -1,3 +1,4 @@
+<%@ include file="testsession.jsp"%>
 <%-- 
     Document   : postLogin
     Created on : 2017-6-12, 14:24:39
