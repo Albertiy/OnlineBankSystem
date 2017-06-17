@@ -17,6 +17,15 @@ public class Transaction {
     private int Amount;
     private String Datetime;
     private String Transfer_id;
+    private String Transfer_name;
+
+    public String getTransfer_name() {
+        return Transfer_name;
+    }
+
+    public void setTransfer_name(String Transfer_name) {
+        this.Transfer_name = Transfer_name;
+    }
 
     public String getAccount_id() {
         return Account_id;
@@ -34,7 +43,7 @@ public class Transaction {
         this.Name = Name;
     }
 
-    public boolean isAccount_type() {
+    public boolean getAccount_type() {
         return Account_type;
     }
 
