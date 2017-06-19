@@ -82,6 +82,16 @@
                 xmlhttp.onreadystatechange = callback;
                 xmlhttp.send();
             }
+            
+            //账户密码修改页面
+            function account_changepw(){
+                if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
+            } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+                xmlhttp.open("GET","account_changepw_ajax.jsp",true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+            
             //转账页面
             function transaction(){
                 if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
@@ -93,8 +103,8 @@
 
             function callback(){
                 if(xmlhttp.readyState ===4 && xmlhttp.status===200){
-                    var divid = document.getElementById("divAjax");
-                    divid.innerHTML=xmlhttp.responseText;
+                    var divid = $("#divAjax");
+                    divid.html(xmlhttp.responseText);
                     //这里直接判断不为空,应该根据数据库返回值来进行不同的显示
                     /*if (xmlhttp.responseText){
                         alert("跳转成功！");
@@ -103,7 +113,12 @@
                     }*/
                 }
             }
-            $(document).ready(init_page());
+            $(document).ready(function(){
+                init_page();
+                if(!$("#operations").hasClass("active")){
+                    $("#operations").addClass("active");
+                }
+            });
         </script>
     </body>
 </html>

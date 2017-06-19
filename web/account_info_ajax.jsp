@@ -40,11 +40,11 @@
                     <br>
                     <div class="controls" style="text-align: right">
                         <a class="btn btn-warning btn-lg" role="button" href="/OnlineBankSystem/AccountOperationServlet" >Cancel</a>
-                        <a class="btn btn-primary btn-lg" role="button" href="#" >Change PayKey</a>
+                        <a class="btn btn-primary btn-lg" role="button" onclick="account_changepw()" href="#" >Change PayKey</a>
                     </div>
                 </div>
     <script>
-            $(document).ready(function () {
+            $("#accountType").ready(function () {
                 if(${sessionScope.account.balance})
                     $("#accountType").val("Current");
                 else
