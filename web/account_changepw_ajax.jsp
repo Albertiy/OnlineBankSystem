@@ -26,7 +26,7 @@
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </div>
                                 <input id="inputOldPassword" minlength="6" maxlength="16" type="password"
-                                       pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" class="form-control" placeholder="Old Password" autofocus="true" required>
+                                       pattern="[0-9][0-9][0-9][0-9][0-9][0-9]" class="form-control" placeholder="Old Password" autofocus="true" required>
                             </div>
                             <br>
                             <div id="groupPassword" class="input-group ">

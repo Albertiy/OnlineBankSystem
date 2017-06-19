@@ -26,11 +26,11 @@
                     <div id="sidebar" class="col-sm-3 col-md-2 affix" style=" background-color: #f5f5f5;height: 100%">
                         <nav>
                             <h3>&nbsp;</h3>
-                            <ul class="nav nav-sidebar">
-                                <li class="active"><a onclick="account_info()" href="#"> Account Info <span class="sr-only">(current)</span></a></li>
-                                <li><a onclick="transaction()" href="#"> Transaction </a></li>
-                                <li><a href="#"> Loans </a></li>
-                                <li><a href="#"> Record </a></li>
+                            <ul class="nav nav-sidebar" id="sidebar">
+                                <li class="active"><a id="accountInfo" onclick="account_info()" href="#"> Account Info <span class="sr-only">(current)</span></a></li>
+                                <li><a id="transaction" onclick="transaction()" href="#"> Transaction </a></li>
+                                <li><a id="loans" href="#"> Loans </a></li>
+                                <li><a id="record" href="#"> Record </a></li>
                                 <legend></legend>
                                 <li><a class="back-to-top" href="#top">Return Top</a></li>
                             </ul>
@@ -76,6 +76,7 @@
             
             //账户信息页面
             function account_info(){
+                $("#accountInfo").parent("li").addClass("active");
                 if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
             } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
                 xmlhttp.open("GET","account_info_ajax.jsp",true);
@@ -94,6 +95,7 @@
             
             //转账页面
             function transaction(){
+                $("#transaction").parent("li").addClass("active");
                 if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
             } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
                 xmlhttp.open("GET","transaction_ajax.jsp",true);
