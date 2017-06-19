@@ -35,7 +35,7 @@ public class AccountOperationServlet extends HttpServlet {
             //判断是否存在account
             Account accountSession = (Account) request.getSession().getAttribute("account");
             if (accountSession == null) {
-                request.getRequestDispatcher("/postLogin.jsp").forward(request, response);
+                request.getRequestDispatcher("/newaccount.jsp").forward(request, response);
             } else {//否则，进行数据准备
                 request.getRequestDispatcher("/operations.jsp").forward(request, response);
             }

@@ -6,13 +6,10 @@
 package cn.niit.dao.impl;
 
 import cn.niit.dao.AccountDao;
-import cn.niit.dao.UserDao;
 import cn.niit.domain.Account;
 import cn.niit.domain.Transaction;
-import cn.niit.domain.User;
 import cn.niit.utils.JDBCUtils;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
