@@ -29,6 +29,8 @@ public interface AccountDao {
         Account updateBanlance(String account_id,int amount);
 	//遍历列表
 	List<Account> getAllAccounts();
+
+    public List<Transaction> getAllTransactionByAccountId(String account_id);
         
         
     

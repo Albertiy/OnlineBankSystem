@@ -70,4 +70,8 @@ public class AccountService {
         return allAccounts;
     }
 
+    public List<Transaction> getallRecords(String account_id) {
+       return ad.getAllTransactionByAccountId(account_id);
+    }
+
 }

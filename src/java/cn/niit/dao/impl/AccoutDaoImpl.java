@@ -10,6 +10,7 @@ import cn.niit.domain.Account;
 import cn.niit.domain.Transaction;
 import cn.niit.utils.JDBCUtils;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -230,7 +231,7 @@ public class AccoutDaoImpl implements AccountDao {
             ps.setString(4, transaction.getTransfer_name());
             ps.setBoolean(5, transaction.getAccount_type());
             ps.setInt(6, transaction.getAmount());
-            ps.setString(7,transaction.getDatetime());
+            ps.setString(7, transaction.getDatetime());
 
             //5.执行sql
             int result = ps.executeUpdate();
@@ -280,6 +281,47 @@ public class AccoutDaoImpl implements AccountDao {
             JDBCUtils.close(conn, ps, rs);
         }
         return list;
+    }
+
+    @Override
+    public List<Transaction> getAllTransactionByAccountId(String account_id) {
+        List<Transaction> list = new ArrayList<Transaction>();
+
+        //1 获得连接
+        Connection conn = JDBCUtils.getConnection();
+        //2 sql语句
+        String sql = "select * from TRANSACTIONS where account_id=?  ";
+        //3 创建PrepareStatement
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, account_id);
+            //4 执行sql
+            rs = ps.executeQuery();
+            //5 遍历结果集
+            while (rs.next()) {
+                //将结果集中的数据封装到Product对象中	
+                Transaction t = new Transaction();
+                t.setAccount_id(rs.getString("account_id"));
+                t.setName(rs.getString("name"));
+                t.setTransfer_id(rs.getString("transfer_id"));
+                t.setTransfer_name(rs.getString("transfer_name"));
+                t.setAccount_type(rs.getBoolean("account_type"));
+                t.setAmount(rs.getInt("amount"));
+                t.setDatetime(rs.getString("datetime"));
+                list.add(t);
+            }
+            //7 返回产品集合
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("查询转账记录数据失败!");
+        } finally {
+            //6 关闭资源
+            JDBCUtils.close(conn, ps, rs);
+        }
     }
 
 }
