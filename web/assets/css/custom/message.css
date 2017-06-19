@@ -1,12 +1,11 @@
-body{
+body .message{
     height: 100%;align-content: center;text-align: center;
     /*background-image: url(./assets/img/bg2.jpg);在css中使用的路径很麻烦，所以在jsp中用*/
     background-repeat:no-repeat;
     background-color:#efefef; 
-    background-repeat:no-repeat;
     background-origin:border-box;
     background-size:auto 100%;
-    background-attachment: fixed;
+    background-attachment: scroll;
     -moz-background-size:auto 100%;
 }
 
@@ -27,7 +26,7 @@ div .message {
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
-div .main{
+div .main .message{
     background-color:#f8f8f8;
     margin-left: auto;
     margin-right: auto;
@@ -44,7 +43,7 @@ div .main{
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
-div .basic-group{
+div .basic-group .message{
     min-width: 260px;
     width:300px !important;
 }

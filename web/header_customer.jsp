@@ -35,6 +35,7 @@
                         <li><a id="home" href="home.jsp">Home</a></li>
                         <li><a id="about" href="about.jsp">About</a></li>
                         <li><a id="contact" href="contact.jsp">Contact</a></li>
+                        <li><a id="operations" href="operations.jsp">Operation</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <div class="btn-group navbar-btn navbar-left">

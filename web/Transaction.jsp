@@ -4,7 +4,6 @@
     Author     : Damon
 --%>
 <%--<%@ include file="testsession.jsp"%>--%>
-<%@ include file="testsession.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,7 +41,7 @@
                     <div class="control-group">
                         <div class="controls">
                             <label class="form-control-static" for="inputAmount">Amount</label>
-                            <input name="transfer_amount"id="inputAmount" placeholder="Amount you want to transfer" type="number" pattern="[0-9]\d{1,}" min="1" class="form-control" required="required">
+                            <input name="transfer_amount"id="inputAmount" placeholder="Amount you want to transfer" type="number" pattern="[0-9]\d{1,}" min="1" max="${sessionScope.account.balance}" class="form-control" required="required">
                         </div>
                     </div>
                      

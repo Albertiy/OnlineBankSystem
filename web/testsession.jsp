@@ -31,7 +31,9 @@
             }
         </script>
     </head>
-    <body onload="shownum()" style="background-image: url(./assets/img/bg2.jpg);">
+    <body class="message" onload="shownum()" style="background-image: url(./assets/img/bg2.jpg);
+          background-attachment: scroll; background-size:auto 100%;
+          background-repeat: no-repeat;-moz-background-size:auto 100%;">
         <div class="container">
             <%
                 if (session.getAttribute("user") == null) {%>
