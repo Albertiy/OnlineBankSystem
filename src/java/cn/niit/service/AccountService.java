@@ -65,13 +65,18 @@ public class AccountService {
         return account;
     }
 
+    public Account changePsd(Account a) {
+        Account account = ad.updateAccountPsd(a);
+        return account;
+    }
+
     public List<Account> getAllUsers() {
         List<Account> allAccounts = ad.getAllAccounts();
         return allAccounts;
     }
 
     public List<Transaction> getallRecords(String account_id) {
-       return ad.getAllTransactionByAccountId(account_id);
+        return ad.getAllTransactionByAccountId(account_id);
     }
 
 }

@@ -6,8 +6,10 @@
 package cn.niit.dao.impl;
 
 import cn.niit.dao.AccountDao;
+import cn.niit.dao.UserDao;
 import cn.niit.domain.Account;
 import cn.niit.domain.Transaction;
+import cn.niit.domain.User;
 import cn.niit.utils.JDBCUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -321,6 +323,39 @@ public class AccoutDaoImpl implements AccountDao {
         } finally {
             //6 关闭资源
             JDBCUtils.close(conn, ps, rs);
+        }
+    }
+
+    @Override
+    public Account updateAccountPsd(Account a) {
+              //1.获得连接
+        Connection conn = JDBCUtils.getConnection();
+        //2.准备sql
+        String sql = "UPDATE ACCOUNT SET account_pw=? where account_id=?";
+
+        java.sql.PreparedStatement ps = null;
+        ResultSet rs = null;
+        Account account = null;
+        //3.准备PreparedStatement对象
+        try {
+            ps = conn.prepareStatement(sql);
+            //4.获得参数
+            ps.setString(1, a.getAccount_pw());
+            ps.setString(2, a.getAccount_id());
+
+            //5.执行修改
+            int executeUpdate = ps.executeUpdate();
+
+            //修改结束后获取修改之后的user
+            account = findAccountByName(a.getLogin_id());
+            return account;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("修改账户密码失败");
+        } finally {
+            //7.关闭资源,返回User
+            JDBCUtils.close(conn, ps, rs);
+
         }
     }
 
