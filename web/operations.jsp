@@ -23,7 +23,7 @@
         <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
         <div class=" container-fluid" style="min-height:100%">
                 <div class="row" style="min-height:100%">
-                    <div id="sidebar" class="col-sm-3 col-md-2 affix" style=" background-color: #f5f5f5;height: 100%">
+                    <div id="sidebar" class="col-sm-3 col-md-2 affix" style=" background-color: #f5f5f5;height: 100%;background: none">
                         <nav>
                             <h3>&nbsp;</h3>
                             <ul class="nav nav-sidebar" id="sidebar">
@@ -37,7 +37,7 @@
                         </nav>
                     </div>
                     <!-- AJAX -->
-                    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="divAjax" style=" background-color: #f5f5f5;height: 100%">
+                    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="divAjax" style=" background-color: #f5f5f5;height: 100%; background:none">
                     </div>
                 </div>
             </div><!-- Container -->
@@ -76,6 +76,7 @@
             
             //账户信息页面
             function account_info(){
+                $("#accountInfo").parent("li").parent("ul").children("li").removeClass("active");
                 $("#accountInfo").parent("li").addClass("active");
                 if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
             } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
@@ -95,6 +96,7 @@
             
             //转账页面
             function transaction(){
+                $("#transaction").parent("li").parent("ul").children("li").removeClass("active");
                 $("#transaction").parent("li").addClass("active");
                 if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
             } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
@@ -103,6 +105,26 @@
                 xmlhttp.send();
             }
 
+            //贷款页面
+            function loans(){
+                $("#loans").parent("li").parent("ul").children("li").removeClass("active");
+                $("#loans").parent("li").addClass("active");
+            }
+
+            //记录页面
+            function record(){
+                $("#record").parent("li").parent("ul").children("li").removeClass("active");
+                $("#record").parent("li").addClass("active");
+                //JQuery提供的Ajax方法,貌似不好用
+                //xmlhttp=$.ajax({url:"/OnlineBankSystem/AccountRecordsServlet",async:true});
+                //原先使用的方法
+                if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
+                } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+                xmlhttp.open("GET","/OnlineBankSystem/AccountRecordsServlet",true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+            
             function callback(){
                 if(xmlhttp.readyState ===4 && xmlhttp.status===200){
                     var divid = $("#divAjax");
@@ -120,6 +142,14 @@
                 if(!$("#operations").hasClass("active")){
                     $("#operations").addClass("active");
                 }
+                //贷款页面
+                $("#loans").click(function(){
+                    loans();
+                });
+                //记录页面
+                $("#record").click(function(){
+                    record();
+                    });
             });
         </script>
     </body>

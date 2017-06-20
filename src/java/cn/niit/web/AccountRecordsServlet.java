@@ -49,7 +49,7 @@ public class AccountRecordsServlet extends HttpServlet {
             request.setAttribute("json", json);
 
             //3.转发到record.jsp
-            request.getRequestDispatcher("/transaction_record.jsp").forward(request, response);
+            request.getRequestDispatcher("/account_record_ajax.jsp").forward(request, response);
         }
     }
 

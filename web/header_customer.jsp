@@ -35,7 +35,16 @@
                         <li><a id="home" href="home.jsp">Home</a></li>
                         <li><a id="about" href="about.jsp">About</a></li>
                         <li><a id="contact" href="contact.jsp">Contact</a></li>
-                        <li><a id="operations" href="operations.jsp">Operation</a></li>
+                        <li><a id="operations" class="dropdown-toggle" data-toggle="dropdown" href="operations.jsp"> Operation <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a onclick="account_info()" href="#"> Account Info <span class="sr-only">(current)</span></a></li>
+                                    <li><a onclick="transaction()" href="#"> Transaction </a></li>
+                                    <li><a onclick="loans()" href="#"> Loans </a></li>
+                                    <li><a onclick="record()" href="#"> Record </a></li>
+                                    <legend></legend>
+                                    <li><a class="back-to-top" href="#top">Return Top</a></li>
+                                </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <div class="btn-group navbar-btn navbar-left">
