@@ -27,7 +27,7 @@ public class LoanDaoImpl implements LoanDao {
         //1.获得连接
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql     
-        String sql = "insert into Loan values(?, ?,?, ?, ?,?,?,?)";
+        String sql = "insert into Loan values(?, ?,?,  ?,?,?,?)";
         java.sql.PreparedStatement ps = null;
         //3.准备PreparedStatement对象
         try {
@@ -37,10 +37,9 @@ public class LoanDaoImpl implements LoanDao {
             ps.setString(2, loan.getLoan_name());
             ps.setInt(3, loan.getAmount());
             ps.setDouble(4, loan.getInterest_rate());
-            ps.setInt(5, loan.getMin_payment());
-            ps.setString(6, loan.getStart_date());
-            ps.setString(7, loan.getDue_date());
-            ps.setInt(8, loan.getState());
+            ps.setString(5, loan.getStart_date());
+            ps.setString(6, loan.getDue_date());
+            ps.setInt(7, loan.getState());
 
             //5.执行sql
             int result = ps.executeUpdate();
@@ -81,7 +80,6 @@ public class LoanDaoImpl implements LoanDao {
                 l.setStart_date(rs.getString("start_date"));
                 l.setLoan_name(rs.getString("loan_name"));
                 l.setInterest_rate(rs.getDouble("interest_rate"));
-                l.setMin_payment(rs.getInt("min_payment"));
                 l.setState(rs.getInt("state"));
 
             }

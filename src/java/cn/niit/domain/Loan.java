@@ -15,7 +15,6 @@ public class Loan {
     private String Loan_name;
     private int Amount;
     private double Interest_rate;
-    private int Min_payment;
     private String Start_date;
     private String Due_date;
     private int state;
@@ -51,13 +50,7 @@ public class Loan {
         this.Interest_rate = Interest_rate;
     }
 
-    public int getMin_payment() {
-        return Min_payment;
-    }
 
-    public void setMin_payment(int Min_payment) {
-        this.Min_payment = Min_payment;
-    }
 
     public String getStart_date() {
         return Start_date;
