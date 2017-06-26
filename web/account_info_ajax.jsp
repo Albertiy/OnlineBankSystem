@@ -45,7 +45,7 @@
                 </div>
     <script>
             $("#accountType").ready(function () {
-                if(${sessionScope.account.balance})
+                if(${sessionScope.account.account_type})
                     $("#accountType").val("Current");
                 else
                     $("#accountType").val("Saving");

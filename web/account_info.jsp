@@ -69,7 +69,7 @@
     <script src="${pageContext.request.contextPath}/assets/js/custom/header.js"></script>
     <script>
             $(document).ready(function () {
-                if(${sessionScope.account.balance})
+                if(${sessionScope.account.account_type})
                     $("#accountType").val("Current");
                 else
                     $("#accountType").val("Saving");

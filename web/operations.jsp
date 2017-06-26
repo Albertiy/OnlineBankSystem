@@ -109,6 +109,11 @@
             function loans(){
                 $("#loans").parent("li").parent("ul").children("li").removeClass("active");
                 $("#loans").parent("li").addClass("active");
+                if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest();
+                } else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+                xmlhttp.open("GET","loan_ajax.jsp",true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
             }
 
             //记录页面
