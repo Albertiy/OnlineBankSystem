@@ -115,7 +115,8 @@ public class LoanDaoImpl implements LoanDao {
                 InterestRate ir = new InterestRate();
                 ir.setInterset_type(rs.getInt("interest_type"));
                 ir.setInterest_name(rs.getString("interest_name"));
-                ir.setDescription(rs.getString("interest_rate"));
+                ir.setInterest_rate(rs.getDouble("interest_rate"));
+                ir.setDescription(rs.getString("description"));
                 ir.setMonth(rs.getInt("month"));                
                 list.add(ir);
             }
