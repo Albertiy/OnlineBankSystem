@@ -8,6 +8,7 @@ package cn.niit.dao.impl;
 import cn.niit.dao.AccountDao;
 import cn.niit.dao.UserDao;
 import cn.niit.domain.Account;
+import cn.niit.domain.InterestRate;
 import cn.niit.domain.Transaction;
 import cn.niit.domain.User;
 import cn.niit.utils.JDBCUtils;
@@ -297,7 +298,7 @@ public class AccoutDaoImpl implements AccountDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            
+
             ps = conn.prepareStatement(sql);
             ps.setString(1, account_id);
             //4 执行sql
@@ -328,7 +329,7 @@ public class AccoutDaoImpl implements AccountDao {
 
     @Override
     public Account updateAccountPsd(Account a) {
-              //1.获得连接
+        //1.获得连接
         Connection conn = JDBCUtils.getConnection();
         //2.准备sql
         String sql = "UPDATE ACCOUNT SET account_pw=? where account_id=?";
@@ -358,5 +359,7 @@ public class AccoutDaoImpl implements AccountDao {
 
         }
     }
+
+
 
 }

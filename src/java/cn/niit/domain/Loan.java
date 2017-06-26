@@ -14,7 +14,11 @@ public class Loan {
     private String Account_id;
     private String Loan_name;
     private int Amount;
-
+    private double Interest_rate;
+    private int Min_payment;
+    private String Start_date;
+    private String Due_date;
+    private int state;
     public String getAccount_id() {
         return Account_id;
     }
@@ -78,10 +82,6 @@ public class Loan {
     public void setState(int state) {
         this.state = state;
     }
-    private double Interest_rate;
-    private int Min_payment;
-    private String Start_date;
-    private String Due_date;
-    private int state;
+
 
 }

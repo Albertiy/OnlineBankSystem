@@ -57,12 +57,12 @@ public class InterestRate {
         this.Month = Month;
     }
 
-    public int getMin_payment() {
-        return min_payment;
-    }
-
-    public void setMin_payment(int min_payment) {
-        this.min_payment = min_payment;
-    }
-    private int min_payment;
+//    public int getMin_payment() {
+//        return min_payment;
+//    }
+//
+//    public void setMin_payment(int min_payment) {
+//        this.min_payment = min_payment;
+//    }
+//    private int min_payment;
 }

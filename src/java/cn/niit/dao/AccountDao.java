@@ -7,6 +7,7 @@ package cn.niit.dao;
 
 import java.util.List;
 import cn.niit.domain.Account;
+import cn.niit.domain.InterestRate;
 import cn.niit.domain.Transaction;
 
 /**
@@ -39,4 +40,7 @@ public interface AccountDao {
     
     public Account updateAccountPsd(Account a);
 
+
+    
+    
 }
