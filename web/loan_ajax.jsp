@@ -1,4 +1,10 @@
-<%--@ include file="testsession.jsp"--%><%@page import="cn.niit.domain.InterestRate"%>
+<%@page import="javax.enterprise.context.SessionScoped"%>
+<% 
+    /* 判断是否有state为3的loan行数据，若有则执行else */
+    if (true) {
+%>
+
+<%@ include file="testsession.jsp"%><%@page import="cn.niit.domain.InterestRate"%>
 <%@page import="java.util.List"%>
 <%@page import="cn.niit.dao.impl.LoanDaoImpl"%>
 <%@page import="cn.niit.dao.LoanDao"%>
@@ -141,21 +147,31 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
         $("#eduLoan").click(function () {
-            $("#inputAccountType").val("Current Account");
-        });
-        $("#houseLoan").click(function () {
-            $("#inputAccountType").val("Saving Account");
+            $("#inputLoanName").val("${educationRate.getInterest_name()}");
+            $("#inputInterestRate").val("${educationRate.getInterest_rate()}");
+            $("#inputDuringMonth").val("${educationRate.getMonth()}");
         });
         $("#carLoan").click(function () {
-            $("#inputAccountType").val("Saving Account");
+            $("#inputLoanName").val("${carRate.getInterest_name()}");
+            $("#inputInterestRate").val("${carRate.getInterest_rate()}");
+            $("#inputDuringMonth").val("${carRate.getMonth()}");
         });
-        $("#Loan").click(function () {
-            $("#inputAccountType").val("Saving Account");
+        $("#houseLoan").click(function () {
+            $("#inputLoanName").val("${houseRate.getInterest_name()}");
+            $("#inputInterestRate").val("${houseRate.getInterest_rate()}");
+            $("#inputDuringMonth").val("${houseRate.getMonth()}");
         });
-        $("#inputInterestRate").val("0.35%");
-        $("#inputMinBalance").val("50");
-        $("#helpConfirmPW").hide();
-                });
+        $("#personalLoan").click(function () {
+            $("#inputLoanName").val("${personalRate.getInterest_name()}");
+            $("#inputInterestRate").val("${personalRate.getInterest_rate()}");
+            $("#inputDuringMonth").val("${personalRate.getMonth()}");
+        });
 </script>
+<%
+}else{
+%>
+    <jsp:include flush="true" page="loan_record_ajax.jsp"></jsp:include>
+<%
+}
+%>
