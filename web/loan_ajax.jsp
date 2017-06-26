@@ -100,7 +100,7 @@
                     <div class="controls">
                         <div class="input-group">
                             <span class="input-group-addon" style="font-weight: bold"> Account&nbsp;&nbsp; ID&nbsp;&nbsp;</span>
-                            <input name="account_id" id="inputAccountId" minlength="6" size="16" type="text" class="form-control" placeholder="Account ID" value="${sessionScope.Account.account_id}" required readonly>
+                            <input name="account_id" id="inputAccountId" minlength="6" size="16" type="text" class="form-control" placeholder="Account ID" value="${sessionScope.account.account_id}" required readonly>
                         </div>
                     </div>
                     <br>
