@@ -25,7 +25,7 @@
 <legend><h1>Loan</h1></legend>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <div id="eduLoan" class="btn btn-primary placeholder" data-toggle="modal" data-target="#myModal">
+        <button id="eduLoan" class="btn btn-primary placeholder" data-toggle="modal" data-target="#myModal">
             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
             <h3><%=educationRate.getInterest_name()%></h3>
             <h4>Details:</h4>
@@ -36,55 +36,49 @@
                     <li> <%=educationRate.getDescription()%></li>
                 </ul>
             </span>
-        </div>
+        </button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <div id="carLoan" class="btn btn-success placeholder" data-toggle="modal" data-target="#myModal">
+        <button id="carLoan" class="btn btn-success placeholder" data-toggle="modal" data-target="#myModal">
             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
             <h3><%=carRate.getInterest_name()%></h3>
             <h4>Details:</h4>
             <span class="text-left">
                 <ul>
-                <ul>
                     <li>Interest Rate: <%=carRate.getInterest_rate()%></li>
                     <li>Loan months:<%=carRate.getMonth()%></li>
                     <li> <%=carRate.getDescription()%></li>
                 </ul>
-                </ul>
             </span>
-        </div>
+        </button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <div id="homeLoan" class="btn btn-primary placeholder" data-toggle="modal" data-target="#myModal">
+        <button id="houseLoan" class="btn btn-primary placeholder" data-toggle="modal" data-target="#myModal">
             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
             <h3><%=houseRate.getInterest_name()%></h3>
             <h4>Details:</h4>
             <span class="text-left">
                 <ul>
-                <ul>
                     <li>Interest Rate: <%=houseRate.getInterest_rate()%></li>
                     <li>Loan months:<%=houseRate.getMonth()%></li>
                     <li> <%=houseRate.getDescription()%></li>
                 </ul>
-                </ul>
             </span>
-        </div>
+        </button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <div id="personalLoan" class="btn btn-success placeholder" data-toggle="modal" data-target="#myModal">
+        <button id="personalLoan" class="btn btn-success placeholder" data-toggle="modal" data-target="#myModal">
             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
             <h3><%=personalRate.getInterest_name()%></h3>
             <h4>Details:</h4>
             <span class="text-left">
                 <ul>
-                <ul>
                     <li>Interest Rate: <%=personalRate.getInterest_rate()%></li>
                     <li>Loan months:<%=personalRate.getMonth()%></li>
                     <li> <%=personalRate.getDescription()%></li>
                 </ul>
-                </ul>
             </span>
-        </div>
+        </button>
     </div>
 </div>
 <!-- Modal -->
@@ -95,7 +89,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Fill table to loan!</h4>
             </div>
-            <form id="formLoan" class="center-block" action="/OnlineBankSystem/NewAccountServlet" method="post">
+            <form id="formLoan" class="center-block" action="/OnlineBankSystem/LoanServlet" method="post">
                 <div class="modal-body center-block">
                     <div class="controls">
                         <div class="input-group">
@@ -146,3 +140,22 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#eduLoan").click(function () {
+            $("#inputAccountType").val("Current Account");
+        });
+        $("#houseLoan").click(function () {
+            $("#inputAccountType").val("Saving Account");
+        });
+        $("#carLoan").click(function () {
+            $("#inputAccountType").val("Saving Account");
+        });
+        $("#Loan").click(function () {
+            $("#inputAccountType").val("Saving Account");
+        });
+        $("#inputInterestRate").val("0.35%");
+        $("#inputMinBalance").val("50");
+        $("#helpConfirmPW").hide();
+                });
+</script>
