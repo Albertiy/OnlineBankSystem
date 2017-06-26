@@ -7,12 +7,12 @@
 %>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<legend><h1 style="text-align: left">Transaction Record</h1></legend>
 <div class="center-block">
-    <div class="main" style="align-content:center">
-        <legend><h1 style="text-align: left">Transaction Record</h1></legend>
+        
         <!-- Core Code -->
         <div id="divTable" class="table-responsive">          
-            <table class=" table table-striped table-bordered">
+            <table class=" table table-striped table-bordered" style="background-color: #cccccc">
                 <thead>
                 <tr>
                     <th>Target ID</th>
@@ -25,7 +25,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
     <script>
         $("#divTable").ready(function () {
             var tbody = document.getElementById("records");
