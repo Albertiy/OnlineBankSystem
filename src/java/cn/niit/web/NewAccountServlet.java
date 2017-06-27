@@ -5,6 +5,8 @@
  */
 package cn.niit.web;
 
+import cn.niit.dao.AccountDao;
+import cn.niit.dao.impl.AccoutDaoImpl;
 import cn.niit.domain.Account;
 import cn.niit.domain.User;
 import cn.niit.service.AccountService;
@@ -83,8 +85,10 @@ public class NewAccountServlet extends HttpServlet {
                 request.getRequestDispatcher("/newaccount.jsp").forward(request, response);
                 return;
             }
+            AccountDao ad=new AccoutDaoImpl();
+            Account findAccountByName = ad.findAccountByName(login_id);
             //4 根据结果,跳转到对应页面
-             request.getSession().setAttribute("account", a);
+             request.getSession().setAttribute("account", findAccountByName);
              response.sendRedirect(request.getContextPath()+"/AccountOperationServlet");//需要先重定向到servlet中进行列表数据的准备
 //            response.sendRedirect(request.getContextPath() + "/operations.jsp");
         }
