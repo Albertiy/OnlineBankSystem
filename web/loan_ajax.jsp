@@ -1,10 +1,10 @@
-<%@page import="javax.enterprise.context.SessionScoped"%>
+<%@ include file="testsession.jsp"%>
 <% 
     /* 判断是否有state为3的loan行数据，若有则执行else */
-    if (true) {
-%>
+    if (session.getAttribute("loan")==null) {%>
 
-<%@ include file="testsession.jsp"%><%@page import="cn.niit.domain.InterestRate"%>
+<%--@page import="javax.enterprise.context.SessionScoped"程序包已过时--%>
+<%@page import="cn.niit.domain.InterestRate"%>
 <%@page import="java.util.List"%>
 <%@page import="cn.niit.dao.impl.LoanDaoImpl"%>
 <%@page import="cn.niit.dao.LoanDao"%>
@@ -148,30 +148,26 @@
 </div>
 <script>
         $("#eduLoan").click(function () {
-            $("#inputLoanName").val("${educationRate.getInterest_name()}");
-            $("#inputInterestRate").val("${educationRate.getInterest_rate()}");
-            $("#inputDuringMonth").val("${educationRate.getMonth()}");
+            $("#inputLoanName").val("<%=educationRate.getInterest_name()%>");
+            $("#inputInterestRate").val("<%=educationRate.getInterest_rate()%>");
+            $("#inputDuringMonth").val("<%=educationRate.getMonth()%>");
         });
         $("#carLoan").click(function () {
-            $("#inputLoanName").val("${carRate.getInterest_name()}");
-            $("#inputInterestRate").val("${carRate.getInterest_rate()}");
-            $("#inputDuringMonth").val("${carRate.getMonth()}");
+            $("#inputLoanName").val("<%=carRate.getInterest_name()%>");
+            $("#inputInterestRate").val("<%=carRate.getInterest_rate()%>");
+            $("#inputDuringMonth").val("<%=carRate.getMonth()%>");
         });
         $("#houseLoan").click(function () {
-            $("#inputLoanName").val("${houseRate.getInterest_name()}");
-            $("#inputInterestRate").val("${houseRate.getInterest_rate()}");
-            $("#inputDuringMonth").val("${houseRate.getMonth()}");
+            $("#inputLoanName").val("<%=houseRate.getInterest_name()%>");
+            $("#inputInterestRate").val("<%=houseRate.getInterest_rate()%>");
+            $("#inputDuringMonth").val("<%=houseRate.getMonth()%>");
         });
         $("#personalLoan").click(function () {
-            $("#inputLoanName").val("${personalRate.getInterest_name()}");
-            $("#inputInterestRate").val("${personalRate.getInterest_rate()}");
-            $("#inputDuringMonth").val("${personalRate.getMonth()}");
+            $("#inputLoanName").val("<%=personalRate.getInterest_name()%>");
+            $("#inputInterestRate").val("<%=personalRate.getInterest_rate()%>");
+            $("#inputDuringMonth").val("<%=personalRate.getMonth()%>");
         });
 </script>
-<%
-}else{
-%>
+<%}else {%>
     <jsp:include flush="true" page="loan_record_ajax.jsp"></jsp:include>
-<%
-}
-%>
+<%}%>
