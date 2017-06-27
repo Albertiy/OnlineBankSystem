@@ -13,6 +13,7 @@ import cn.niit.domain.Account;
 import cn.niit.domain.Loan;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -42,23 +43,22 @@ public class LoanServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String account_id = (String) request.getAttribute("account_id");
-            String loan_name = (String) request.getAttribute("loan_name");
-            String interest_rate = (String) request.getAttribute("interest_rate");
-            String during_month = (String) request.getAttribute("during_month");
-            String loan_amount = (String) request.getAttribute("loan_amount");
-            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            java.util.Date currentTime = new java.util.Date();//得到当前系统时间   
-            String str_date1 = formatter.format(currentTime); //将日期时间格式化   
-            String start_date = currentTime.toString(); //将Date型日期时间转换成字符串形式   
-            Calendar curr = Calendar.getInstance();
-            curr.set(Calendar.MONTH, curr.get(Calendar.MONTH) + Integer.getInteger(during_month));
-            Date date1 = curr.getTime();
-            formatter.format(date1); //将日期时间格式化   
-            String due_date = date1.toString(); //将Date型日期时间转换成字符串形式  
+            String account_id = request.getParameter("account_id");
+            String loan_name = (String) request.getParameter("loan_name");
+            String interest_rate = (String) request.getParameter("interest_rate");
+            String during_month = (String) request.getParameter("during_month");
+            String loan_amount = (String) request.getParameter("loan_amount");
+            Date date = new Date();
+            String start_date = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(date);
+            
+            Calendar ca = Calendar.getInstance();
+            ca.setTime(date);
+            ca.add(Calendar.MONTH, Integer.parseInt(during_month));
+            String due_date = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(ca.getTime());
             Loan loan = new Loan();
             loan.setAccount_id(account_id);
-            loan.setAmount(Integer.getInteger(loan_amount));
+            loan.setLoan_name(loan_name);
+            loan.setAmount(Integer.parseInt(loan_amount));
             loan.setDue_date(due_date);
             loan.setInterest_rate(Double.valueOf(interest_rate));
             loan.setStart_date(start_date);

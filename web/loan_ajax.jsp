@@ -1,7 +1,12 @@
+<%@page import="cn.niit.domain.Loan"%>
 <%@ include file="testsession.jsp"%>
-<% 
+<%
     /* 判断是否有state为3的loan行数据，若有则执行else */
-    if (session.getAttribute("loan")==null) {%>
+    LoanDao ld = new LoanDaoImpl();
+    Account a = (Account) request.getSession().getAttribute("account");
+    Loan loansession = ld.findLoanById(a.getAccount_id());
+    request.getSession().setAttribute("loan", loansession);
+    if (session.getAttribute("loan") == null) {%>
 
 <%--@page import="javax.enterprise.context.SessionScoped"程序包已过时--%>
 <%@page import="cn.niit.domain.InterestRate"%>
@@ -17,7 +22,6 @@
 %>
 
 <%
-    LoanDao ld = new LoanDaoImpl();
     List<InterestRate> list = ld.getAllInterestRates();
     InterestRate educationRate = list.get(0);
     InterestRate carRate = list.get(1);
@@ -147,27 +151,27 @@
     </div>
 </div>
 <script>
-        $("#eduLoan").click(function () {
-            $("#inputLoanName").val("<%=educationRate.getInterest_name()%>");
-            $("#inputInterestRate").val("<%=educationRate.getInterest_rate()%>");
-            $("#inputDuringMonth").val("<%=educationRate.getMonth()%>");
-        });
-        $("#carLoan").click(function () {
-            $("#inputLoanName").val("<%=carRate.getInterest_name()%>");
-            $("#inputInterestRate").val("<%=carRate.getInterest_rate()%>");
-            $("#inputDuringMonth").val("<%=carRate.getMonth()%>");
-        });
-        $("#houseLoan").click(function () {
-            $("#inputLoanName").val("<%=houseRate.getInterest_name()%>");
-            $("#inputInterestRate").val("<%=houseRate.getInterest_rate()%>");
-            $("#inputDuringMonth").val("<%=houseRate.getMonth()%>");
-        });
-        $("#personalLoan").click(function () {
-            $("#inputLoanName").val("<%=personalRate.getInterest_name()%>");
-            $("#inputInterestRate").val("<%=personalRate.getInterest_rate()%>");
-            $("#inputDuringMonth").val("<%=personalRate.getMonth()%>");
-        });
+    $("#eduLoan").click(function () {
+        $("#inputLoanName").val("<%=educationRate.getInterest_name()%>");
+        $("#inputInterestRate").val("<%=educationRate.getInterest_rate()%>");
+        $("#inputDuringMonth").val("<%=educationRate.getMonth()%>");
+    });
+    $("#carLoan").click(function () {
+        $("#inputLoanName").val("<%=carRate.getInterest_name()%>");
+        $("#inputInterestRate").val("<%=carRate.getInterest_rate()%>");
+        $("#inputDuringMonth").val("<%=carRate.getMonth()%>");
+    });
+    $("#houseLoan").click(function () {
+        $("#inputLoanName").val("<%=houseRate.getInterest_name()%>");
+        $("#inputInterestRate").val("<%=houseRate.getInterest_rate()%>");
+        $("#inputDuringMonth").val("<%=houseRate.getMonth()%>");
+    });
+    $("#personalLoan").click(function () {
+        $("#inputLoanName").val("<%=personalRate.getInterest_name()%>");
+        $("#inputInterestRate").val("<%=personalRate.getInterest_rate()%>");
+        $("#inputDuringMonth").val("<%=personalRate.getMonth()%>");
+    });
 </script>
-<%}else {%>
-    <jsp:include flush="true" page="loan_record_ajax.jsp"></jsp:include>
+<%} else {%>
+<jsp:include flush="true" page="loan_record_ajax.jsp"></jsp:include>
 <%}%>
