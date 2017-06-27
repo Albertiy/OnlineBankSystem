@@ -14,7 +14,7 @@
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;Account ID&nbsp;&nbsp;
                             </div>
-                            <input class="form-control" type="text" readonly="readonly" value="${sessionScope.account.account_id}">
+                            <input class="form-control" type="text" readonly="readonly" placeholder="account id" value="${sessionScope.account.account_id}">
                         </div>
                     <br>
                     <div class="input-group ">

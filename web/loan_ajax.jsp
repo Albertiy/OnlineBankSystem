@@ -1,5 +1,5 @@
 <%@page import="cn.niit.domain.Loan"%>
-<%@ include file="testsession.jsp"%>
+<%--@ include file="testsession.jsp"--%>
 <%
     /* 判断是否有state为3的loan行数据，若有则执行else */
     LoanDao ld = new LoanDaoImpl();

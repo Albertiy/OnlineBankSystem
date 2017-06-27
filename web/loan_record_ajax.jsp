@@ -1,4 +1,4 @@
-<%@ include file="testsession.jsp"%><%@page import="cn.niit.domain.Account"%>
+<%--@ include file="testsession.jsp"--%><%@page import="cn.niit.domain.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     response.setHeader("Cache-Control", "no-store");//HTTP1.1
