@@ -104,7 +104,7 @@ public class AccoutDaoImpl implements AccountDao {
         //1.获得连接
         Connection conn = JDBCUtils.getConnection();
         //2.先查询ACCOUNT表，通过transfer_id，获取到login_id
-        String sql = "select * from ACCOUNT where transfer_id=?";
+        String sql = "select * from ACCOUNT where account_id=?";
         java.sql.PreparedStatement ps = null;
         ResultSet rs = null;
         ResultSet rs2 = null;
