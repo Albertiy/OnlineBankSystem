@@ -24,22 +24,27 @@
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <!-- Navbar -->
+    <%if (session.getAttribute("user") == null) {%>
         <jsp:include flush="true" page="header.jsp"></jsp:include>
+    <%}else{%>
+        <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
+    <%}%>
 
         <div class="container">
             <div class="jumbotron">
-                <legend><h1>Loan Category</h1></legend>
+                <!--legend><h1>Loan Category</h1></legend-->
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div id="eduLoan" class="btn-primary placeholder" data-toggle="modal" data-target="#myModal">
-                            <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
-                            <h3>Education Loan</h3>
+                            <span style="font-size:xx-large" class="glyphicon glyphicon-lock"></span>
+                            <h3>Safety</h3>
                             <h4>Details:</h4>
                             <span class="text-left">
                                 <table>
-                                    <tr><td></td>
-                                        <td></td>
-                                    </tr>
+                                    <ul>
+                                    <li>Safe for your save</li>
+                                    <li>Protect your privacy</li>
+                                </ul>
                                 </table>
                             </span>
                         </div>
@@ -47,7 +52,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div id="carLoan" class="btn-success placeholder" data-toggle="modal" data-target="#myModal">
                             <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
-                            <h3>Car Loan</h3>
+                            <h3>Efficient</h3>
                             <h4>Details:</h4>
                             <span class="text-left">
                                 <ul>
@@ -61,26 +66,26 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div id="homeLoan" class="btn-primary placeholder" data-toggle="modal" data-target="#myModal">
-                            <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
-                            <h3>Home Loan</h3>
+                            <span style="font-size:xx-large" class="glyphicon glyphicon-plane"></span>
+                            <h3>Convenient</h3>
                             <h4>Details:</h4>
                             <span class="text-justify">
                                 <ul>
-                                    <li>Current Deposit</li>
-                                    <li>Fixed Deposit</li>
+                                    <li>Anywhere as home</li>
+                                    <li>Extensive cooperation</li>
                                 </ul>
                             </span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div id="personalLoan" class="btn-success placeholder" data-toggle="modal" data-target="#myModal">
-                            <span style="font-size:xx-large" class="glyphicon glyphicon-yen"></span>
-                            <h3>Personal Loan</h3>
+                            <span style="font-size:xx-large" class="glyphicon glyphicon-earphone"></span>
+                            <h3>Intimate</h3>
                             <h4>Details:</h4>
                             <span class="text-justify">
                                 <ul>
-                                    <li>Current Deposit</li>
-                                    <li>Fixed Deposit</li>
+                                    <li>24h customer support</li>
+                                    <li>Understand your needs</li>
                                 </ul>
                             </span>
                         </div>

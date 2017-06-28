@@ -34,7 +34,7 @@
     <br>
     <div class="controls">
         <div class="input-group">
-            <span class="input-group-addon" style="font-weight: bold"> Start Date</span>
+            <span class="input-group-addon" style="font-weight: bold"> Start &nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;</span>
             <input name="start_date" id="inputStartDate" type="text" placeholder=" Start Date"
                    class="form-control" value="${sessionScope.loan.start_date}" readonly>
         </div>
@@ -42,7 +42,7 @@
     <br>
     <div class="controls">
         <div class="input-group">
-            <span class="input-group-addon" style="font-weight: bold"> Due Date</span>
+            <span class="input-group-addon" style="font-weight: bold"> &nbsp;Due &nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;</span>
             <input name="due_date" id="inputDueDate" type="text" placeholder=" Due Date"
                    class="form-control" value="${sessionScope.loan.due_date}" readonly>
         </div>
@@ -52,16 +52,16 @@
         <div class="input-group">
             <span class="input-group-addon" style="font-weight: bold">Loan Amount</span>
             <input name="loan_amount" id="inputLoanAmount" t placeholder=" Loan Amount"
-                   class="form-control" required="true" value="${sessionScope.loan.amount}" readonly>
+                   class="form-control" required="true" value="${sessionScope.loan.amount} ￥" readonly>
         </div>
     </div>
     <br>
-    <div class="controls">
+    <!--div class="controls">
         <div class="input-group">
             <span class="input-group-addon" style="font-weight: bold"> State</span>
             <input name="state" id="inputState" type="text" placeholder=" State"
                    class="form-control" value="${sessionScope.loan.state}" readonly>
         </div>
-    </div>
+    </div-->
     <br>
 </div>

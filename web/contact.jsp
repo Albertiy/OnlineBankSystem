@@ -23,8 +23,11 @@
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/assets/img/bg1.jpg);background-repeat: repeat">
         <!-- Navbar -->
+    <%if (session.getAttribute("user") == null) {%>
         <jsp:include flush="true" page="header.jsp"></jsp:include>
-
+    <%}else{%>
+        <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
+    <%}%>
         <div class="container">
             <div class="jumbotron" style="min-height: 400px">
                 <h1>Contact Us</h1>

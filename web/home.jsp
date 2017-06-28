@@ -23,8 +23,11 @@
     </head>
     <body>
         <!-- Navbar -->
+    <%if (session.getAttribute("user") == null) {%>
         <jsp:include flush="true" page="header.jsp"></jsp:include>
-
+    <%}else{%>
+        <jsp:include flush="true" page="header_customer.jsp"></jsp:include>
+    <%}%>
         <!-- unslider -->
         <div class="banner">
             <ul>
