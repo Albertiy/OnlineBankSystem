@@ -3,6 +3,7 @@
     Created on : 2017-6-9, 13:19:12
     Author     : YAN YUE
 --%>
+<%@page import="cn.niit.domain.Account"%>
 <%@ include file="testsession.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,9 +29,12 @@
                             <h3>&nbsp;</h3>
                             <ul class="nav nav-sidebar" id="sidebar">
                                 <li class="active"><a id="accountInfo" onclick="account_info()" href="#"> Account Info <span class="sr-only">(current)</span></a></li>
+                            <% Account a= (Account)request.getSession().getAttribute("account");
+                            if(a.getAccount_type()){%>
                                 <li><a id="transaction" onclick="transaction()" href="#"> Transaction </a></li>
                                 <li><a id="loans" href="#"> Loans </a></li>
                                 <li><a id="record" href="#"> Record </a></li>
+                            <%}%>
                                 <legend></legend>
                                 <li><a class="back-to-top" href="#top">Return Top</a></li>
                             </ul>

@@ -1,3 +1,4 @@
+<%@page import="cn.niit.domain.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -38,9 +39,12 @@
                         <li><a id="operations" class="dropdown-toggle" data-toggle="dropdown" href="operations.jsp"> Operation <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a onclick="account_info()" href="#"> Account Info <span class="sr-only">(current)</span></a></li>
+                                <% Account a= (Account)request.getSession().getAttribute("account");
+                                if(a.getAccount_type()){%>
                                     <li><a onclick="transaction()" href="#"> Transaction </a></li>
                                     <li><a onclick="loans()" href="#"> Loans </a></li>
                                     <li><a onclick="record()" href="#"> Record </a></li>
+                                <%}%>
                                     <legend></legend>
                                     <li><a class="back-to-top" href="#top">Return Top</a></li>
                                 </ul>
