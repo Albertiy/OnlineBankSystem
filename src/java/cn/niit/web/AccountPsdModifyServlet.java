@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AccountPsdModifyServlet", urlPatterns = {"/AccountPsdModifyServlet"})
 public class AccountPsdModifyServlet extends HttpServlet {
-    private  AccountService as=new AccountService();
+
+    private AccountService as = new AccountService();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,15 +41,14 @@ public class AccountPsdModifyServlet extends HttpServlet {
             //记得先加上这行代码
             request.setCharacterEncoding("UTF-8");
             //1封装参数
-            Account a=new Account();
-            a.setAccount_id(request.getParameter("account_id"));
+           Account a =(Account)request.getSession().getAttribute("account");
             a.setAccount_pw(request.getParameter("password"));
             //2.修改密码
             Account account = as.changePsd(a);
             //3.修改成功，将user保存到Session中进行存储
             request.getSession().setAttribute("account", account);
             //4.AccountOperationServlet处理业务
-             response.sendRedirect(request.getContextPath()+"/AccountOperationServlet");
+            request.getRequestDispatcher("/operations.jsp").forward(request, response);
         }
     }
 
